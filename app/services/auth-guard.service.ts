@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { AuthTokenStore } from '../services';
+import {
+  CanActivate,
+  Router,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot
+} from '@angular/router';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router) { }
+  constructor(
+      private router: Router,
+      private authStore: AuthTokenStore) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let url: string = state.url;
@@ -12,7 +20,10 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
-    this.router.navigate([ '/login' ]);
-    return false;
+    if (this.authStore.state === null) {
+      this.router.navigate([ '/login' ]);
+      return false;
+    }
+    return true;
   }
 }

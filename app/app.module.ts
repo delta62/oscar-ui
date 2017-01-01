@@ -6,20 +6,31 @@ import {
   AppComponent,
   CategoriesComponent,
   LoginComponent
-}  from './components';
+} from './components';
+
+import {
+  DispatcherService,
+  LocalStorageService,
+  AuthTokenStore
+} from './services';
 
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     FormsModule
   ],
   declarations: [
     AppComponent,
     LoginComponent,
     CategoriesComponent
+  ],
+  providers: [
+    DispatcherService,
+    AuthTokenStore,
+    LocalStorageService
   ],
   bootstrap: [ AppComponent ]
 })

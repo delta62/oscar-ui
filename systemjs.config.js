@@ -15,7 +15,8 @@
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
 
-      'rxjs': 'npm:rxjs'
+      'rxjs': 'npm:rxjs',
+      'flux-lite': 'npm:flux-lite/dist/flux-lite.umd.js'
     },
     packages: {
       app: {

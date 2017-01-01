@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../model';
+import { DispatcherService } from '../services';
+import { LoginPayload } from '../payloads';
 
 @Component({
   selector: 'o-login',
@@ -17,8 +19,12 @@ import { User } from '../model';
 export class LoginComponent {
   model = new User()
 
-  onSubmit() {
-    console.log('submit');
-    console.dir(this.model);
+  constructor(private dispatcher: DispatcherService) { }
+
+  onSubmit(): void {
+    console.log('dispatch');
+    this.dispatcher.dispatch(new LoginPayload({
+      email: this.model.email
+    }));
   }
 };

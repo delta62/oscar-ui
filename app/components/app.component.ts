@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthTokenStore } from '../services';
 
 @Component({
   selector: 'o-app',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
     <router-outlet></router-outlet>
   `,
 })
-export class AppComponent { }
+export class AppComponent {
+  constructor(authTokenStore: AuthTokenStore) { }
+}
