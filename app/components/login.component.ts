@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { User } from '../model';
-import { DispatcherService } from '../services';
-import { LoginPayload } from '../payloads';
+import { User } from '../model/user';
+import { DispatcherService } from '../services/dispatcher.service';
+import { LoginPayload } from '../payloads/login';
 
 @Component({
   selector: 'o-login',

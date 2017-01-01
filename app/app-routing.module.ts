@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './services';
-import {
-  CategoriesComponent,
-  LoginComponent
-} from './components';
+import { AuthGuard } from './services/auth-guard.service';
+import { CategoriesComponent } from './components/categories.component';
+import { LoginComponent } from './components/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/categories', pathMatch: 'full' },

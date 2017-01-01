@@ -2,17 +2,13 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
-import {
-  AppComponent,
-  CategoriesComponent,
-  LoginComponent
-} from './components';
+import { AppComponent } from './components/app.component';
+import { CategoriesComponent } from './components/categories.component';
+import { LoginComponent } from './components/login.component';
 
-import {
-  DispatcherService,
-  LocalStorageService,
-  AuthTokenStore
-} from './services';
+import { DispatcherService } from './services/dispatcher.service';
+import { LocalStorageService } from './services/localstorage.service';
+import { AuthTokenStore } from './stores/auth-token.store';
 
 import { AppRoutingModule } from './app-routing.module';
 

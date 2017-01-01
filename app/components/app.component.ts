@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthTokenStore } from '../services';
+import { AuthTokenStore } from '../stores/auth-token.store';
 
 @Component({
   selector: 'o-app',
