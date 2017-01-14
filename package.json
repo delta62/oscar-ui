@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Frontend application for an Oscars trivia game",
   "scripts": {
-    "start": "concurrently 'tsc -w' lite-server"
+    "start": "concurrently \"tsc -w\" \"lite-server\""
   },
   "main": "index.js",
   "repository": "git@github.com:delta62/oscar-ui.git",
