@@ -22,7 +22,6 @@ export class LoginComponent {
   constructor(private dispatcher: DispatcherService) { }
 
   onSubmit(): void {
-    console.log('dispatch');
     this.dispatcher.dispatch(new LoginPayload({
       email: this.model.email
     }));

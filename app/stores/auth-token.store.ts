@@ -3,12 +3,14 @@ import { FluxStore } from 'flux-lite';
 import { LoginPayload } from '../payloads/login';
 import { DispatcherService } from '../services/dispatcher.service';
 import { LocalStorageService } from '../services/localstorage.service';
-import { AuthToken } from '../services/auth.service';
+import { AuthService } from '../services/auth.service';
+import { AuthToken } from '../model/auth-token';
 
 @Injectable()
 export class AuthTokenStore extends FluxStore<AuthToken, LoginPayload> {
   constructor(
       dispatcher: DispatcherService,
+      private authService: AuthService,
       private localStorage: LocalStorageService) {
     super(dispatcher);
   }
@@ -17,10 +19,13 @@ export class AuthTokenStore extends FluxStore<AuthToken, LoginPayload> {
     return this.localStorage.getItem('authToken');
   }
 
-  reduce(state: AuthToken, payload: LoginPayload): AuthToken {
-    console.log('time to reduce');
+  reduce(state: AuthToken, payload: LoginPayload): Promise<AuthToken> | AuthToken {
     if (payload.type === LoginPayload.TYPE) {
-      console.log('Time to log in');
+      return this.authService.login(payload.email)
+        .then(token => {
+          this.localStorage.setItem('authToken', token);
+          return token;
+        });
     }
     return state;
   }
