@@ -9,7 +9,7 @@ export class AuthService {
   constructor(private http: Http) { }
 
   login(email: string): Promise<AuthToken> {
-    return this.http.post(this.buildUrl(), this.buildLoginBody(email))
+    return this.http.post(this.buildLoginUrl(), this.buildLoginBody(email))
       .toPromise()
       .then(res => res.json())
       .then(json => json.token);
@@ -19,7 +19,7 @@ export class AuthService {
     return { username: email };
   }
 
-  private buildUrl(): string {
+  private buildLoginUrl(): string {
     return `${AppSettings.baseUrl}/login`;
   }
 }

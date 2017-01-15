@@ -1,65 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from '../model/user';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { DispatcherService } from '../services/dispatcher.service';
 import { LoginPayload } from '../payloads/login';
+import { User } from '../model/user';
 
 @Component({
   selector: 'o-login',
   template: `
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
       <div class="form-item">
         <label for="email">Email</label>
-        <input id="email" formControlName="email">
-      </div>
-
-      <div class="form-item" *ngIf="isNewEmail">
-        <label for="name">Name</label>
-        <input id="name" formControlName="name">
+        <input id="email" type="email" name="email" [(ngModel)]="model.email" required>
       </div>
 
       <button [disabled]="!loginForm.valid">Submit</button>
+      <a href="/newaccount">Create Account</a>
     </form>`
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  isNewEmail: boolean;
+export class LoginComponent {
   model: User;
 
   constructor(
       private dispatcher: DispatcherService,
-      private formBuilder: FormBuilder) {
-
+      private router: Router) {
     this.model = new User();
   }
 
-  ngOnInit(): void {
-    this.loginForm = this.buildForm();
-  }
-
-  private buildForm(): FormGroup {
-    let nameValidators = this.isNewEmail ? [ Validators.required ] : [ ];
-    let newForm = this.formBuilder.group({
-      email: [ this.model.email, [ Validators.required ] ],
-      name: [ this.model.name, nameValidators ]
-    });
-
-    newForm.controls['email'].valueChanges.subscribe(email => {
-      this.model.email = email;
-    });
-
-    newForm.controls['name'].valueChanges.subscribe(name => {
-      this.model.name = name;
-    });
-
-    return newForm;
-  }
-
   onSubmit(): void {
-    this.isNewEmail = true;
-    this.loginForm = this.buildForm();
-    // this.dispatcher.dispatch(new LoginPayload({
-    //   email: this.model.email
-    // }));
+    this.dispatcher
+      .dispatch(new LoginPayload({ email: this.model.email }))
+      .then(() => this.router.navigateByUrl('/categories'));
   }
 };

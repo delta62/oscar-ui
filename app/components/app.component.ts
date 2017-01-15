@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthTokenStore } from '../stores/auth-token.store';
+import { AccountStore } from '../stores/account.store';
 
 @Component({
   selector: 'o-app',
@@ -8,5 +9,5 @@ import { AuthTokenStore } from '../stores/auth-token.store';
   `,
 })
 export class AppComponent {
-  constructor(authTokenStore: AuthTokenStore) { }
+  constructor(authTokenStore: AuthTokenStore, accountStore: AccountStore) { }
 }
