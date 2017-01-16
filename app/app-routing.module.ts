@@ -7,8 +7,8 @@ import { LoginComponent } from './components/login.component';
 import { NewAccountComponent } from './components/new-account.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/categories', pathMatch: 'full' },
-  { path: 'categories', canActivate: [ AuthGuard ], component: CategoriesComponent },
+  { path: '', redirectTo: '/ballot', pathMatch: 'full' },
+  { path: 'ballot', canActivate: [ AuthGuard ], component: CategoriesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'newaccount', component: NewAccountComponent }
 ];

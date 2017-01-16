@@ -29,6 +29,6 @@ export class LoginComponent {
   onSubmit(): void {
     this.dispatcher
       .dispatch(new LoginPayload({ email: this.model.email }))
-      .then(() => this.router.navigateByUrl('/categories'));
+      .then(() => this.router.navigateByUrl('/ballot'));
   }
 };
