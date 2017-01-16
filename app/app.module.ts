@@ -7,6 +7,8 @@ import { AppComponent }        from './components/app.component';
 import { CategoriesComponent } from './components/categories.component';
 import { LoginComponent }      from './components/login.component';
 import { NewAccountComponent } from './components/new-account.component';
+import { HeaderComponent }     from './components/header.component';
+import { CategoryPreviewComponent } from './components/category-preview.component';
 
 import { DispatcherService }   from './services/dispatcher.service';
 import { LocalStorageService } from './services/localstorage.service';
@@ -14,6 +16,8 @@ import { AuthTokenStore }      from './stores/auth-token.store';
 import { AccountStore }        from './stores/account.store';
 import { AuthService }         from './services/auth.service';
 import { UserService }         from './services/user.service';
+import { CategoryStore }       from './stores/category.store';
+import { CategoryService }     from './services/category.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -28,7 +32,9 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     LoginComponent,
     CategoriesComponent,
-    NewAccountComponent
+    NewAccountComponent,
+    HeaderComponent,
+    CategoryPreviewComponent
   ],
   providers: [
     DispatcherService,
@@ -36,7 +42,9 @@ import { AppRoutingModule } from './app-routing.module';
     AccountStore,
     AuthService,
     UserService,
-    LocalStorageService
+    LocalStorageService,
+    CategoryStore,
+    CategoryService
   ],
   bootstrap: [ AppComponent ]
 })
