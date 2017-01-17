@@ -12,6 +12,10 @@ export class CategoryStore extends FluxStore<Array<Category>, CategoriesUpdatedP
     super(dispatcher);
   }
 
+  getById(id: string): Category {
+    return this.state.find(cat => cat._id === id);
+  }
+
   getInitialState(): Array<Category> {
     return [ ];
   }

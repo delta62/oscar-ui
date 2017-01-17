@@ -5,10 +5,12 @@ import { AuthGuard } from './services/auth-guard.service';
 import { CategoriesComponent } from './components/categories.component';
 import { LoginComponent } from './components/login.component';
 import { NewAccountComponent } from './components/new-account.component';
+import { CategoryComponent } from './components/category.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ballot', pathMatch: 'full' },
   { path: 'ballot', canActivate: [ AuthGuard ], component: CategoriesComponent },
+  { path: 'ballot/:categoryId', canActivate: [ AuthGuard ], component: CategoryComponent },
   { path: 'login', component: LoginComponent },
   { path: 'newaccount', component: NewAccountComponent }
 ];

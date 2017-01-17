@@ -9,6 +9,7 @@ import { LoginComponent }      from './components/login.component';
 import { NewAccountComponent } from './components/new-account.component';
 import { HeaderComponent }     from './components/header.component';
 import { CategoryPreviewComponent } from './components/category-preview.component';
+import { CategoryComponent } from './components/category.component';
 
 import { DispatcherService }   from './services/dispatcher.service';
 import { LocalStorageService } from './services/localstorage.service';
@@ -34,7 +35,8 @@ import { AppRoutingModule } from './app-routing.module';
     CategoriesComponent,
     NewAccountComponent,
     HeaderComponent,
-    CategoryPreviewComponent
+    CategoryPreviewComponent,
+    CategoryComponent
   ],
   providers: [
     DispatcherService,
