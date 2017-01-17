@@ -19,6 +19,8 @@ import { AuthService }         from './services/auth.service';
 import { UserService }         from './services/user.service';
 import { CategoryStore }       from './stores/category.store';
 import { CategoryService }     from './services/category.service';
+import { ResponseService }     from './services/response.service';
+import { ResponseStore }       from './stores/response.store';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -46,7 +48,9 @@ import { AppRoutingModule } from './app-routing.module';
     UserService,
     LocalStorageService,
     CategoryStore,
-    CategoryService
+    CategoryService,
+    ResponseService,
+    ResponseStore
   ],
   bootstrap: [ AppComponent ]
 })
