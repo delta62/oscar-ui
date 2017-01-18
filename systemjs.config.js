@@ -4,7 +4,7 @@
       'npm:': 'node_modules/'
     },
     map: {
-      app: 'output',
+      app: 'output/app',
 
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
       '@angular/common': 'npm:@angular/common/bundles/common.umd.js',

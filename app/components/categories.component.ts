@@ -2,7 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { Category } from '../model/category';
 import { CategoryStore } from '../stores/category.store';
 import { DispatcherService } from '../services/dispatcher.service';
-import { CategoriesUpdatedPayload } from '../payloads/categories-updated';
+import { AppInitPayload } from '../payload';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,7 +22,7 @@ export class CategoriesComponent implements OnInit, DoCheck {
       private dispatcher: DispatcherService) { }
 
   ngOnInit(): void {
-    this.dispatcher.dispatch(new CategoriesUpdatedPayload());
+    this.dispatcher.dispatch(new AppInitPayload());
   }
 
   ngDoCheck(): void {

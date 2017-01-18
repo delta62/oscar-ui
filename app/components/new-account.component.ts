@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DispatcherService } from '../services/dispatcher.service';
 import { User } from '../model/user';
-import { NewAccountPayload } from '../payloads/new-account';
+import { NewAccountPayload } from '../payload';
 
 @Component({
   selector: 'o-newaccount',
@@ -30,7 +30,10 @@ export class NewAccountComponent {
 
   submit(): void {
     this.dispatcher
-      .dispatch(new NewAccountPayload(this.model))
+      .dispatch(new NewAccountPayload({
+        email: this.model.email,
+        name: this.model.name
+      }))
       .then(() => this.router.navigateByUrl('/login'));
   }
 }
