@@ -3,7 +3,7 @@ import { AuthTokenStore } from '../stores/auth-token.store';
 import { AccountStore } from '../stores/account.store';
 import { ResponseStore } from '../stores/response.store';
 import { DispatcherService } from '../services/dispatcher.service';
-import { AppInitPayload } from '../payloads/init';
+import { AppInitPayload } from '../payload';
 
 @Component({
   selector: 'o-app',
@@ -19,6 +19,6 @@ export class AppComponent implements OnInit {
       responseStore: ResponseStore) { }
 
   ngOnInit(): void {
-    this.dispatcher.dispatch({ type: AppInitPayload.name });
+    this.dispatcher.dispatch(new AppInitPayload());
   }
 }

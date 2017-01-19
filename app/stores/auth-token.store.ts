@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FluxStore } from 'flux-lite';
-import { LoginPayload } from '../payloads/login';
+import { isType, LoginPayload } from '../payload';
 import { DispatcherService } from '../services/dispatcher.service';
 import { LocalStorageService } from '../services/localstorage.service';
 import { AuthService } from '../services/auth.service';
@@ -20,7 +20,7 @@ export class AuthTokenStore extends FluxStore<AuthToken, LoginPayload> {
   }
 
   reduce(state: AuthToken, payload: LoginPayload): Promise<AuthToken> | AuthToken {
-    if (payload.type === LoginPayload.TYPE) {
+    if (isType(LoginPayload, payload)) {
       return this.authService.login(payload.email)
         .then(token => {
           this.localStorage.setItem('authToken', token);

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DispatcherService } from '../services/dispatcher.service';
-import { LoginPayload } from '../payloads/login';
+import { LoginPayload } from '../payload';
 import { User } from '../model/user';
 
 @Component({

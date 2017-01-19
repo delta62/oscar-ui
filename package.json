@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Frontend application for an Oscars trivia game",
   "scripts": {
-    "start": "concurrently \"tsc -w\" \"lite-server\""
+    "start": "concurrently \"tsc -w\" \"lite-server\"",
+    "build": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js"
   },
   "main": "index.js",
   "repository": "git@github.com:delta62/oscar-ui.git",
@@ -12,11 +13,13 @@
   "dependencies": {
     "@angular/common": "^2.4.1",
     "@angular/compiler": "^2.4.1",
+    "@angular/compiler-cli": "^2.4.3",
     "@angular/core": "^2.4.1",
     "@angular/forms": "^2.4.1",
     "@angular/http": "^2.4.1",
     "@angular/platform-browser": "^2.4.1",
     "@angular/platform-browser-dynamic": "^2.4.1",
+    "@angular/platform-server": "^2.4.3",
     "@angular/router": "^3.4.1",
     "flux-lite": "^3.0.0",
     "reflect-metadata": "^0.1.9",
@@ -26,6 +29,10 @@
   "devDependencies": {
     "concurrently": "^3.1.0",
     "lite-server": "^2.2.2",
+    "rollup": "^0.41.4",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
     "systemjs": "0.19.38",
     "typescript": "^2.1.4"
   }

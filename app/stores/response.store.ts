@@ -1,8 +1,7 @@
 import { FluxStore } from 'flux-lite';
 import { Injectable } from '@angular/core';
 import { Response } from '../model/response';
-import { SaveResponsePayload } from '../payloads/response';
-import { AppInitPayload } from '../payloads/init';
+import { isType, AppInitPayload, SaveResponsePayload } from '../payload';
 import { ResponseService } from '../services/response.service';
 import { DispatcherService } from '../services/dispatcher.service';
 
@@ -20,12 +19,12 @@ export class ResponseStore extends FluxStore<Array<Response>, SaveResponsePayloa
   }
 
   reduce(state: Array<Response>, payload: SaveResponsePayload): Array<Response> | Promise<Array<Response>> {
-    if (payload.type === SaveResponsePayload.name) {
+    if (isType(SaveResponsePayload, payload)) {
       return this.responseService
         .saveResponse(payload.categoryId, payload.value)
         .then(() => this.mergeChanges(state, payload));
     }
-    if (payload.type === AppInitPayload.name) {
+    if (isType(AppInitPayload, payload)) {
       return this.responseService.getResponses();
     }
     return state;

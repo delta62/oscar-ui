@@ -5,7 +5,7 @@ import { Response } from '../model/response';
 import { CategoryStore } from '../stores/category.store';
 import { ResponseStore } from '../stores/response.store';
 import { DispatcherService } from '../services/dispatcher.service';
-import { SaveResponsePayload } from '../payloads/response';
+import { SaveResponsePayload } from '../payload';
 
 @Component({
   template: `
@@ -44,10 +44,9 @@ export class CategoryComponent implements OnInit {
   }
 
   onChoiceChanged(option: string): void {
-    this.dispatcher.dispatch({
+    this.dispatcher.dispatch(new SaveResponsePayload({
       categoryId: this.category._id,
-      value: option,
-      type: SaveResponsePayload.name
-    });
+      value: option
+    }));
   }
 }
