@@ -1,9 +1,9 @@
 import { FluxStore } from 'flux-lite';
 import { Injectable } from '@angular/core';
-import { Response } from '../model/response';
+import { Response } from '../model';
 import { isType, AppInitPayload, SaveResponsePayload } from '../payload';
-import { ResponseService } from '../services/response.service';
-import { DispatcherService } from '../services/dispatcher.service';
+import { ResponseService } from '../services';
+import { DispatcherService } from '../dispatcher.service';
 
 @Injectable()
 export class ResponseStore extends FluxStore<Array<Response>, SaveResponsePayload> {

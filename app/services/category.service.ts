@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Category } from '../model/category';
-import { AuthToken } from '../model/auth-token';
 import { Http, Headers } from '@angular/http';
-import { AuthTokenStore } from '../stores/auth-token.store';
+import { AuthToken, Category } from '../model';
+import { AuthTokenStore } from '../stores';
 
 import 'rxjs/add/operator/toPromise';
 

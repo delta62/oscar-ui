@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthTokenStore } from '../stores/auth-token.store';
-import { AccountStore } from '../stores/account.store';
-import { ResponseStore } from '../stores/response.store';
-import { DispatcherService } from '../services/dispatcher.service';
+import { AuthTokenStore, AccountStore, ResponseStore } from '../stores';
+import { DispatcherService } from '../dispatcher.service';
 import { AppInitPayload } from '../payload';
 
 @Component({

@@ -1,10 +1,10 @@
 import { FluxStore, Action } from 'flux-lite';
 import { Injectable } from '@angular/core';
 import { isType, NewAccountPayload, LoginPayload } from '../payload';
-import { User } from '../model/user';
+import { User } from '../model';
 import { AuthTokenStore } from './auth-token.store';
-import { DispatcherService } from '../services/dispatcher.service';
-import { UserService } from '../services/user.service';
+import { DispatcherService } from '../dispatcher.service';
+import { UserService } from '../services';
 
 @Injectable()
 export class AccountStore extends FluxStore<User, NewAccountPayload> {
@@ -17,7 +17,7 @@ export class AccountStore extends FluxStore<User, NewAccountPayload> {
   }
 
   getInitialState(): User {
-    return this.getCurrentUser();
+    return null;
   }
 
   reduce(state: User, payload: NewAccountPayload, action: Action<LoginPayload>): User | Promise<User> {

@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './services/auth-guard.service';
-import { CategoriesComponent } from './components/categories.component';
-import { LoginComponent } from './components/login.component';
-import { NewAccountComponent } from './components/new-account.component';
-import { CategoryComponent } from './components/category.component';
+import { AuthGuard } from './services';
+import {
+  CategoriesComponent,
+  CategoryComponent,
+  LoginComponent,
+  NewAccountComponent
+} from './components';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ballot', pathMatch: 'full' },

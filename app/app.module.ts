@@ -3,27 +3,34 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
-import { AppComponent }        from './components/app.component';
-import { CategoriesComponent } from './components/categories.component';
-import { LoginComponent }      from './components/login.component';
-import { NewAccountComponent } from './components/new-account.component';
-import { HeaderComponent }     from './components/header.component';
-import { CategoryPreviewComponent } from './components/category-preview.component';
-import { CategoryComponent } from './components/category.component';
+import { AppRoutingModule }  from './app-routing.module';
+import { DispatcherService } from './dispatcher.service';
 
-import { DispatcherService }   from './services/dispatcher.service';
-import { LocalStorageService } from './services/localstorage.service';
-import { AuthTokenStore }      from './stores/auth-token.store';
-import { AccountStore }        from './stores/account.store';
-import { AuthService }         from './services/auth.service';
-import { UserService }         from './services/user.service';
-import { CategoryStore }       from './stores/category.store';
-import { CategoryService }     from './services/category.service';
-import { ResponseService }     from './services/response.service';
-import { ResponseStore }       from './stores/response.store';
-import { ScoreStore }          from './stores/score.store';
+import {
+  AppComponent,
+  CategoriesComponent,
+  LoginComponent,
+  NewAccountComponent,
+  HeaderComponent,
+  CategoryPreviewComponent,
+  CategoryComponent
+} from './components';
 
-import { AppRoutingModule } from './app-routing.module';
+import {
+  AuthTokenStore,
+  AccountStore,
+  CategoryStore,
+  ResponseStore,
+  ScoreStore,
+} from './stores';
+
+import {
+  LocalStorageService,
+  AuthService,
+  UserService,
+  CategoryService,
+  ResponseService
+} from './services';
 
 @NgModule({
   imports: [

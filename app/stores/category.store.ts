@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Category } from '../model/category';
-import { DispatcherService } from '../services/dispatcher.service';
 import { FluxStore } from 'flux-lite';
+import { Injectable } from '@angular/core';
+import { Category } from '../model';
+import { DispatcherService } from '../dispatcher.service';
 import { isType, AppInitPayload } from '../payload';
-import { CategoryService } from '../services/category.service';
+import { CategoryService } from '../services';
 
 @Injectable()
 export class CategoryStore extends FluxStore<Array<Category>, AppInitPayload> {

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Category } from '../model/category';
-import { Response } from '../model/response';
-import { CategoryStore } from '../stores/category.store';
-import { ResponseStore } from '../stores/response.store';
-import { DispatcherService } from '../services/dispatcher.service';
+import { Category, Response } from '../model';
+import { CategoryStore, ResponseStore } from '../stores';
+import { DispatcherService } from '../dispatcher.service';
 import { SaveResponsePayload } from '../payload';
 
 @Component({

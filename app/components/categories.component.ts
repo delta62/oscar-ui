@@ -1,13 +1,9 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { Category } from '../model/category';
-import { User } from '../model/user';
-import { Score } from '../model/score';
-import { CategoryStore } from '../stores/category.store';
-import { AccountStore } from '../stores/account.store';
-import { DispatcherService } from '../services/dispatcher.service';
-import { AppInitPayload } from '../payload';
 import { Router } from '@angular/router';
-import { ScoreStore } from '../stores/score.store';
+import { DispatcherService } from '../dispatcher.service';
+import { AppInitPayload } from '../payload';
+import { Category, User, Score } from '../model';
+import { CategoryStore, AccountStore, ScoreStore } from '../stores';
 
 @Component({
   template: `
