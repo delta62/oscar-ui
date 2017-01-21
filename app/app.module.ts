@@ -21,6 +21,7 @@ import { CategoryStore }       from './stores/category.store';
 import { CategoryService }     from './services/category.service';
 import { ResponseService }     from './services/response.service';
 import { ResponseStore }       from './stores/response.store';
+import { ScoreStore }          from './stores/score.store';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -50,7 +51,8 @@ import { AppRoutingModule } from './app-routing.module';
     CategoryStore,
     CategoryService,
     ResponseService,
-    ResponseStore
+    ResponseStore,
+    ScoreStore
   ],
   bootstrap: [ AppComponent ]
 })

@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { User } from '../model/user';
+import { Score } from '../model/score';
 
 @Component({
   selector: 'o-header',
   template: `
-    <header>
-      Header
-    </header>
+      {{ user.name }}
+      {{ score.totalScore }}
     `
 })
-export class HeaderComponent { }
+export class HeaderComponent {
+  @Input() user: User;
+  @Input() score: Score;
+}

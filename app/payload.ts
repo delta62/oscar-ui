@@ -44,3 +44,12 @@ export class NewAccountPayload implements IPayload {
     this.name = initializer.name;
   }
 }
+
+@Payload('GetUserScore')
+export class GetUserScorePayload implements IPayload {
+  userId: string;
+
+  constructor(initializer: GetUserScorePayload) {
+    this.userId = initializer.userId;
+  }
+}

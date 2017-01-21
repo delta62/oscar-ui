@@ -17,7 +17,7 @@ export class AccountStore extends FluxStore<User, NewAccountPayload> {
   }
 
   getInitialState(): User {
-    return this.getFromAuthStore();
+    return this.getCurrentUser();
   }
 
   reduce(state: User, payload: NewAccountPayload, action: Action<LoginPayload>): User | Promise<User> {
@@ -29,9 +29,20 @@ export class AccountStore extends FluxStore<User, NewAccountPayload> {
     if (isType(LoginPayload, payload)) {
       return this.dispatcher
         .waitFor([ this.authTokenStore.dispatchToken ], action)
-        .then(() => this.getFromAuthStore());
+        .then(() => this.getCurrentUser());
     }
     return state;
+  }
+
+  private getCurrentUser(): Promise<User> {
+    let authToken = this.authTokenStore.state;
+    let authUser = this.getFromAuthStore();
+    if (authUser === null) return Promise.resolve(null);
+    return this.userService.getUser(authToken)
+      .then(u => ({
+        name: u.name,
+        email: u.email
+      }));
   }
 
   private getFromAuthStore(): User {

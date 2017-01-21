@@ -10,5 +10,10 @@
     "outDir": "output",
     "pretty": true,
     "suppressImplicitAnyIndexErrors": true
-  }
+  },
+  "exclude": [
+    "node_modules/",
+    "app/main-aot.ts",
+    "aot/"
+  ]
 }
