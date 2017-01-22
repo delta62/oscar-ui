@@ -1,6 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
-import { DispatcherService } from '../dispatcher.service';
+import { DispatcherService } from '../services';
 import { AppInitPayload } from '../payload';
 import { Category, User, Score } from '../model';
 import { CategoryStore, AccountStore, ScoreStore } from '../stores';

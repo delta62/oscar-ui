@@ -3,15 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
-import { DispatcherService } from './dispatcher.service';
-
 import {
   AuthService,
   CategoryService,
+  DispatcherService,
   LocalStorageService,
   ResponseService,
   UserService
 } from './services';
+
+import {
+  AccountStore,
+  AuthTokenStore,
+  CategoryStore,
+  ResponseStore,
+  ScoreStore
+} from './stores';
 
 import {
   AppComponent,
@@ -22,14 +29,6 @@ import {
   LoginComponent,
   NewAccountComponent
 } from './components';
-
-import {
-  AccountStore,
-  AuthTokenStore,
-  CategoryStore,
-  ResponseStore,
-  ScoreStore
-} from './stores';
 
 import { AppRoutingModule }  from './app-routing.module';
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { DispatcherService } from '../dispatcher.service';
+import { DispatcherService } from '../services';
 import { NewAccountPayload } from '../payload';
 import { User } from '../model';
 

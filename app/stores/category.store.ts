@@ -1,9 +1,8 @@
 import { FluxStore } from 'flux-lite';
 import { Injectable } from '@angular/core';
 import { Category } from '../model';
-import { DispatcherService } from '../dispatcher.service';
 import { isType, AppInitPayload } from '../payload';
-import { CategoryService } from '../services';
+import { CategoryService, DispatcherService } from '../services';
 import { AuthTokenStore } from './auth-token.store';
 
 @Injectable()
