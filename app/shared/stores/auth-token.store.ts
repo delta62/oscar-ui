@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FluxStore } from 'flux-lite';
 import { isType, LoginPayload } from '../payload';
-import { AuthService, LocalStorageService, DispatcherService  } from '../services';
-import { AuthToken } from '../model';
+import { AuthService } from '../services/auth.service';
+import { LocalStorageService } from '../services/localstorage.service';
+import { DispatcherService } from '../services/dispatcher.service';
+import { AuthToken } from '../model/auth-token';
 
 @Injectable()
 export class AuthTokenStore extends FluxStore<AuthToken, LoginPayload> {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptionsArgs } from '@angular/http';
-import { Response } from '../model';
+import { Response } from '../model/response';
 
 @Injectable()
 export class ResponseService {

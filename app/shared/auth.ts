@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthTokenStore } from '../stores';
+import { AuthTokenStore } from './stores/auth-token.store';
 import {
   CanActivate,
   Router,

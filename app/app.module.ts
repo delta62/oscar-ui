@@ -1,65 +1,25 @@
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
-import { HttpModule }    from '@angular/http';
-
-import {
-  AuthService,
-  CategoryService,
-  DispatcherService,
-  LocalStorageService,
-  ResponseService,
-  UserService
-} from './services';
-
-import {
-  AccountStore,
-  AuthTokenStore,
-  CategoryStore,
-  ResponseStore,
-  ScoreStore
-} from './stores';
-
-import {
-  AppComponent,
-  CategoriesComponent,
-  CategoryComponent,
-  CategoryPreviewComponent,
-  HeaderComponent,
-  LoginComponent,
-  NewAccountComponent
-} from './components';
+import { NgModule }          from '@angular/core';
+import { BrowserModule }     from '@angular/platform-browser';
 
 import { AppRoutingModule }  from './app-routing.module';
+import { BallotModule }      from './ballot/ballot.module';
+import { LoginModule }       from './login/login.module';
+import { SharedModule }      from './shared/shared.module';
+
+import { AppComponent }      from './app.component';
+import { NotFoundComponent } from './not-found.component';
 
 @NgModule({
   imports: [
-    AppRoutingModule,
+    BallotModule,
+    LoginModule,
     BrowserModule,
-    FormsModule,
-    HttpModule
+    SharedModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
-    LoginComponent,
-    CategoriesComponent,
-    NewAccountComponent,
-    HeaderComponent,
-    CategoryPreviewComponent,
-    CategoryComponent
-  ],
-  providers: [
-    DispatcherService,
-    AuthTokenStore,
-    AccountStore,
-    AuthService,
-    UserService,
-    LocalStorageService,
-    CategoryStore,
-    CategoryService,
-    ResponseService,
-    ResponseStore,
-    ScoreStore
+    NotFoundComponent
   ],
   bootstrap: [ AppComponent ]
 })

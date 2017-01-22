@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { DispatcherService } from '../services';
-import { NewAccountPayload } from '../payload';
-import { User } from '../model';
+import { DispatcherService } from '../shared/services/dispatcher.service';
+import { NewAccountPayload } from '../shared/payload';
+import { User } from '../shared/model/user';
 
 @Component({
   selector: 'o-newaccount',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { AuthToken } from '../model';
+import { AuthToken } from '../model/auth-token';
 
 import 'rxjs/add/operator/toPromise';
 

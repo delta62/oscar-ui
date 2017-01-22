@@ -1,9 +1,10 @@
 import { FluxStore, Action } from 'flux-lite';
 import { Injectable } from '@angular/core';
 import { isType, NewAccountPayload, LoginPayload } from '../payload';
-import { User } from '../model';
+import { User } from '../model/user';
 import { AuthTokenStore } from './auth-token.store';
-import { UserService, DispatcherService } from '../services';
+import { DispatcherService } from '../services/dispatcher.service';
+import { UserService } from '../services/user.service';
 
 @Injectable()
 export class AccountStore extends FluxStore<User, NewAccountPayload> {

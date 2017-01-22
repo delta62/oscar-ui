@@ -1,25 +1,15 @@
-import { NgModule } from '@angular/core';
+import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './guards';
-import {
-  CategoriesComponent,
-  CategoryComponent,
-  LoginComponent,
-  NewAccountComponent
-} from './components';
+import { NotFoundComponent } from './not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ballot', pathMatch: 'full' },
-  { path: 'ballot', canActivate: [ AuthGuard ], component: CategoriesComponent },
-  { path: 'ballot/:categoryId', canActivate: [ AuthGuard ], component: CategoryComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'newaccount', component: NewAccountComponent }
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ],
-  providers: [ AuthGuard ]
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

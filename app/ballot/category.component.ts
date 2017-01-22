@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }      from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Category, Response } from '../model';
-import { CategoryStore, ResponseStore } from '../stores';
-import { DispatcherService } from '../services';
-import { SaveResponsePayload } from '../payload';
+import { Category } from '../shared/model/category';
+import { Response } from '../shared/model/response';
+import { CategoryStore } from '../shared/stores/category.store';
+import { ResponseStore } from '../shared/stores/response.store';
+import { DispatcherService } from '../shared/services/dispatcher.service';
+import { SaveResponsePayload } from '../shared/payload';
 
 @Component({
   template: `

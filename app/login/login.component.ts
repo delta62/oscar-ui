@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { DispatcherService } from '../services';
-import { LoginPayload } from '../payload';
-import { User } from '../model';
+import { Router }    from '@angular/router';
+import { DispatcherService } from '../shared/services/dispatcher.service';
+import { LoginPayload } from '../shared/payload';
+import { User } from '../shared/model/user';
 
 @Component({
   selector: 'o-login',

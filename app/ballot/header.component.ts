@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { User, Score } from '../model';
+import { User } from '../shared/model/user';
+import { Score } from '../shared/model/score';
 
 @Component({
   selector: 'o-header',
