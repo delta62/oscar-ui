@@ -1,0 +1,6 @@
+{
+  "open": false,
+  "logLevel": "warn",
+  "logFileChanges": false,
+  "middleware": [ ]
+}

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { DispatcherService } from '../services/dispatcher.service';
-import { User } from '../model/user';
+import { DispatcherService } from '../dispatcher.service';
 import { NewAccountPayload } from '../payload';
+import { User } from '../model';
 
 @Component({
   selector: 'o-newaccount',
@@ -25,7 +25,7 @@ export class NewAccountComponent {
   model: User;
 
   constructor(private dispatcher: DispatcherService, private router: Router) {
-    this.model = new User();
+    this.model = { name: '', email: '' };
   }
 
   submit(): void {

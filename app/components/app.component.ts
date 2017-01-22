@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthTokenStore } from '../stores/auth-token.store';
-import { AccountStore } from '../stores/account.store';
-import { ResponseStore } from '../stores/response.store';
-import { DispatcherService } from '../services/dispatcher.service';
-import { AppInitPayload } from '../payload';
+import { AuthTokenStore, AccountStore, ResponseStore } from '../stores';
 
 @Component({
   selector: 'o-app',
@@ -11,14 +7,9 @@ import { AppInitPayload } from '../payload';
     <router-outlet></router-outlet>
   `,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor(
-      private dispatcher: DispatcherService,
       authTokenStore: AuthTokenStore,
       accountStore: AccountStore,
       responseStore: ResponseStore) { }
-
-  ngOnInit(): void {
-    this.dispatcher.dispatch(new AppInitPayload());
-  }
 }

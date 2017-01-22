@@ -8,15 +8,17 @@
 
 	<script src="node_modules/zone.js/dist/zone.js"></script>
 	<script src="node_modules/reflect-metadata/Reflect.js"></script>
+	<script src="node_modules/systemjs/dist/system.src.js"></script>
 
+  <script src="systemjs.config.js"></script>
   <script>
     window.AppSettings = {
       baseUrl: 'http://localhost:3001'
     };
+    System.import('app').catch(console.error.bind(console));
   </script>
 </head>
 <body>
   <o-app>Loading...</o-app>
-  <script src="dist/oscars.min.js"></script>
 </body>
 </html>

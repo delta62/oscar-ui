@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { AuthToken } from '../model/auth-token';
+import { AuthToken } from '../model';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   private buildLoginBody(email: string): any {
-    return { username: email };
+    return { email };
   }
 
   private buildLoginUrl(): string {

@@ -1,14 +1,13 @@
 import { FluxStore, Action } from 'flux-lite';
 import { Injectable } from '@angular/core';
 import { isType, NewAccountPayload, LoginPayload } from '../payload';
-import { User } from '../model/user';
+import { User } from '../model';
 import { AuthTokenStore } from './auth-token.store';
-import { DispatcherService } from '../services/dispatcher.service';
-import { UserService } from '../services/user.service';
+import { DispatcherService } from '../dispatcher.service';
+import { UserService } from '../services';
 
 @Injectable()
 export class AccountStore extends FluxStore<User, NewAccountPayload> {
-
   constructor(
       dispatcher: DispatcherService,
       private authTokenStore: AuthTokenStore,
@@ -17,7 +16,7 @@ export class AccountStore extends FluxStore<User, NewAccountPayload> {
   }
 
   getInitialState(): User {
-    return this.getFromAuthStore();
+    return { name: '', email: '' };
   }
 
   reduce(state: User, payload: NewAccountPayload, action: Action<LoginPayload>): User | Promise<User> {
@@ -29,9 +28,20 @@ export class AccountStore extends FluxStore<User, NewAccountPayload> {
     if (isType(LoginPayload, payload)) {
       return this.dispatcher
         .waitFor([ this.authTokenStore.dispatchToken ], action)
-        .then(() => this.getFromAuthStore());
+        .then(() => this.getCurrentUser());
     }
     return state;
+  }
+
+  private getCurrentUser(): Promise<User> {
+    let authToken = this.authTokenStore.state;
+    let authUser = this.getFromAuthStore();
+    if (authUser === null) return Promise.resolve(null);
+    return this.userService.getUser(authToken)
+      .then(u => ({
+        name: u.name,
+        email: u.email
+      }));
   }
 
   private getFromAuthStore(): User {

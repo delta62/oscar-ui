@@ -1,4 +1,4 @@
-export class Response {
+export interface Response {
   category: string;
   value: string;
 }

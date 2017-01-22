@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Category } from '../model/category';
-import { Response } from '../model/response';
-import { CategoryStore } from '../stores/category.store';
-import { ResponseStore } from '../stores/response.store';
-import { DispatcherService } from '../services/dispatcher.service';
+import { Category, Response } from '../model';
+import { CategoryStore, ResponseStore } from '../stores';
+import { DispatcherService } from '../dispatcher.service';
 import { SaveResponsePayload } from '../payload';
 
 @Component({
@@ -32,14 +30,14 @@ export class CategoryComponent implements OnInit {
       private route: ActivatedRoute,
       private categoryStore: CategoryStore,
       private responseStore: ResponseStore) {
-    this.category = new Category();
+    this.category = { _id: '', name: '', options: [ ] };
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       let categoryId = params['categoryId'];
       this.category = this.categoryStore.getById(categoryId);
-      this.response = this.responseStore.getCategoryResponse(categoryId) || new Response();
+      this.response = this.responseStore.getCategoryResponse(categoryId) || { category: '', value: '' };
     });
   }
 
