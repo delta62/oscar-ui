@@ -25,7 +25,7 @@ export class NewAccountComponent {
   model: User;
 
   constructor(private dispatcher: DispatcherService, private router: Router) {
-    this.model = new User();
+    this.model = { name: '', email: '' };
   }
 
   submit(): void {

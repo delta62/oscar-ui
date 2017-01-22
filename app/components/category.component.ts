@@ -30,14 +30,14 @@ export class CategoryComponent implements OnInit {
       private route: ActivatedRoute,
       private categoryStore: CategoryStore,
       private responseStore: ResponseStore) {
-    this.category = new Category();
+    this.category = { _id: '', name: '', options: [ ] };
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       let categoryId = params['categoryId'];
       this.category = this.categoryStore.getById(categoryId);
-      this.response = this.responseStore.getCategoryResponse(categoryId) || new Response();
+      this.response = this.responseStore.getCategoryResponse(categoryId) || { category: '', value: '' };
     });
   }
 

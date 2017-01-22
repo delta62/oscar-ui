@@ -23,7 +23,7 @@ export class LoginComponent {
   constructor(
       private dispatcher: DispatcherService,
       private router: Router) {
-    this.model = new User();
+    this.model = { name: '', email: '' };
   }
 
   onSubmit(): void {

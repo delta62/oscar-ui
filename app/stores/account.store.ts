@@ -8,7 +8,6 @@ import { UserService } from '../services';
 
 @Injectable()
 export class AccountStore extends FluxStore<User, NewAccountPayload> {
-
   constructor(
       dispatcher: DispatcherService,
       private authTokenStore: AuthTokenStore,
@@ -17,7 +16,7 @@ export class AccountStore extends FluxStore<User, NewAccountPayload> {
   }
 
   getInitialState(): User {
-    return null;
+    return { name: '', email: '' };
   }
 
   reduce(state: User, payload: NewAccountPayload, action: Action<LoginPayload>): User | Promise<User> {

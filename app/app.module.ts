@@ -3,34 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
-import { AppRoutingModule }  from './app-routing.module';
 import { DispatcherService } from './dispatcher.service';
+
+import {
+  AuthService,
+  CategoryService,
+  LocalStorageService,
+  ResponseService,
+  UserService
+} from './services';
 
 import {
   AppComponent,
   CategoriesComponent,
-  LoginComponent,
-  NewAccountComponent,
-  HeaderComponent,
+  CategoryComponent,
   CategoryPreviewComponent,
-  CategoryComponent
+  HeaderComponent,
+  LoginComponent,
+  NewAccountComponent
 } from './components';
 
 import {
-  AuthTokenStore,
   AccountStore,
+  AuthTokenStore,
   CategoryStore,
   ResponseStore,
-  ScoreStore,
+  ScoreStore
 } from './stores';
 
-import {
-  LocalStorageService,
-  AuthService,
-  UserService,
-  CategoryService,
-  ResponseService
-} from './services';
+import { AppRoutingModule }  from './app-routing.module';
 
 @NgModule({
   imports: [
