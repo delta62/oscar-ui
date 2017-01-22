@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { AuthToken, Category } from '../model';
-import { AuthTokenStore } from '../stores';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CategoryService {
 
-  constructor(private http: Http, private authStore: AuthTokenStore) { }
+  constructor(private http: Http) { }
 
-  getCategories(): Promise<Array<Category>> {
-    let token: AuthToken = this.authStore.state;
+  getCategories(authToken: string): Promise<Array<Category>> {
     let headers = new Headers({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${authToken}`
     });
     return this.http.get(this.buildCategoriesUrl(), { headers })
       .toPromise()

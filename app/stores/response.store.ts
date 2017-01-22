@@ -4,13 +4,15 @@ import { Response } from '../model';
 import { isType, AppInitPayload, SaveResponsePayload } from '../payload';
 import { ResponseService } from '../services';
 import { DispatcherService } from '../dispatcher.service';
+import { AuthTokenStore } from './auth-token.store';
 
 @Injectable()
 export class ResponseStore extends FluxStore<Array<Response>, SaveResponsePayload> {
 
   constructor(
       dispatcher: DispatcherService,
-      private responseService: ResponseService) {
+      private responseService: ResponseService,
+      private authTokenStore: AuthTokenStore) {
     super(dispatcher);
   }
 
@@ -20,12 +22,14 @@ export class ResponseStore extends FluxStore<Array<Response>, SaveResponsePayloa
 
   reduce(state: Array<Response>, payload: SaveResponsePayload): Array<Response> | Promise<Array<Response>> {
     if (isType(SaveResponsePayload, payload)) {
+      let authToken = this.authTokenStore.state;
       return this.responseService
-        .saveResponse(payload.categoryId, payload.value)
+        .saveResponse(authToken, payload.categoryId, payload.value)
         .then(() => this.mergeChanges(state, payload));
     }
     if (isType(AppInitPayload, payload)) {
-      return this.responseService.getResponses();
+      let authToken = this.authTokenStore.state;
+      return this.responseService.getResponses(authToken);
     }
     return state;
   }
