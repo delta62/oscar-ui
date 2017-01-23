@@ -1,7 +1,7 @@
-import { FluxStore } from 'flux-lite';
+import { FluxStore, Action } from 'flux-lite';
 import { Injectable } from '@angular/core';
 import { Response } from '../model/response';
-import { isType, AppInitPayload, SaveResponsePayload } from '../payload';
+import { isType, IPayload, DidLoginPayload, SaveResponsePayload } from '../payload';
 import { DispatcherService } from '../services/dispatcher.service';
 import { ResponseService } from '../services/response.service';
 import { AuthTokenStore } from './auth-token.store';
@@ -20,16 +20,17 @@ export class ResponseStore extends FluxStore<Array<Response>, SaveResponsePayloa
     return [ ];
   }
 
-  reduce(state: Array<Response>, payload: SaveResponsePayload): Array<Response> | Promise<Array<Response>> {
+  reduce(state: Array<Response>, payload: SaveResponsePayload, action: Action<IPayload>): Array<Response> | Promise<Array<Response>> {
     if (isType(SaveResponsePayload, payload)) {
       let authToken = this.authTokenStore.state;
       return this.responseService
         .saveResponse(authToken, payload.categoryId, payload.value)
         .then(() => this.mergeChanges(state, payload));
     }
-    if (isType(AppInitPayload, payload)) {
-      let authToken = this.authTokenStore.state;
-      return this.responseService.getResponses(authToken);
+    if (isType(DidLoginPayload, payload)) {
+      return this.dispatcher.waitFor([ this.authTokenStore.dispatchToken ], action)
+        .then(() => this.authTokenStore.state)
+        .then(token => this.responseService.getResponses(token));
     }
     return state;
   }

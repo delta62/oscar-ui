@@ -15,6 +15,10 @@ export class AuthTokenStore extends FluxStore<AuthToken, LoginPayload> {
     super(dispatcher);
   }
 
+  get isLoggedIn(): boolean {
+    return !!this.state;
+  }
+
   getInitialState(): AuthToken {
     return this.localStorage.getItem('authToken');
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit }      from '@angular/core';
+import { Component, DoCheck }     from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Category } from '../shared/model/category';
 import { Response } from '../shared/model/response';
@@ -8,6 +8,7 @@ import { DispatcherService } from '../shared/services/dispatcher.service';
 import { SaveResponsePayload } from '../shared/payload';
 
 @Component({
+  selector: 'o-category',
   template: `
     <h1>{{ category.name }}</h1>
     <div
@@ -23,7 +24,7 @@ import { SaveResponsePayload } from '../shared/payload';
       <label [for]="'option-' + i">{{ option }}</label>
     </div>`
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent implements DoCheck {
   category: Category;
   response: Response;
 
@@ -31,15 +32,15 @@ export class CategoryComponent implements OnInit {
       private dispatcher: DispatcherService,
       private route: ActivatedRoute,
       private categoryStore: CategoryStore,
-      private responseStore: ResponseStore) {
-    this.category = { _id: '', name: '', options: [ ] };
-  }
+      private responseStore: ResponseStore) { }
 
-  ngOnInit(): void {
+  ngDoCheck(): void {
     this.route.params.subscribe((params: Params) => {
-      let categoryId = params['categoryId'];
-      this.category = this.categoryStore.getById(categoryId);
-      this.response = this.responseStore.getCategoryResponse(categoryId) || { category: '', value: '' };
+      let categoryId = params['id'];
+      this.category = this.categoryStore.getById(categoryId)
+        || { _id: categoryId, name: '', options: [ ] };
+      this.response = this.responseStore.getCategoryResponse(categoryId)
+        || { category: '', value: '' };
     });
   }
 

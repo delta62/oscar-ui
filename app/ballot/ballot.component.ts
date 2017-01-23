@@ -2,10 +2,12 @@ import { Component, DoCheck } from '@angular/core';
 
 import { User }  from '../shared/model/user';
 import { Score } from '../shared/model/score';
+import { CategoryComponent } from './category.component';
 import { AccountStore } from '../shared/stores/account.store';
 import { ScoreStore }   from '../shared/stores/score.store';
 
 @Component({
+  selector: 'o-ballot',
   template: `
     <o-header [user]="user" [score]="score"></o-header>
     <router-outlet></router-outlet>

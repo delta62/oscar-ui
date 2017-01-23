@@ -1,7 +1,6 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
-import { Router }                     from '@angular/router';
+import { Component,  DoCheck } from '@angular/core';
+import { Router }              from '@angular/router';
 import { DispatcherService } from '../shared/services/dispatcher.service';
-import { AppInitPayload }    from '../shared/payload';
 import { Category } from '../shared/model/category';
 import { User }     from '../shared/model/user';
 import { Score }    from '../shared/model/score';
@@ -16,17 +15,13 @@ import { ScoreStore }    from '../shared/stores/score.store';
       [category]="category"
       (click)="navigateToCategory(category)"></o-category-preview>`
 })
-export class CategoriesComponent implements OnInit, DoCheck {
+export class CategoriesComponent implements DoCheck {
   categories: Array<Category>;
 
   constructor(
       private categoryStore: CategoryStore,
       private router: Router,
       private dispatcher: DispatcherService) { }
-
-  ngOnInit(): void {
-    this.dispatcher.dispatch(new AppInitPayload());
-  }
 
   ngDoCheck(): void {
     this.categories = this.categoryStore.state;

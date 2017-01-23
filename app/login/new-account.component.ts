@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DispatcherService } from '../shared/services/dispatcher.service';
 import { NewAccountPayload } from '../shared/payload';
 import { User } from '../shared/model/user';
@@ -24,7 +24,10 @@ import { User } from '../shared/model/user';
 export class NewAccountComponent {
   model: User;
 
-  constructor(private dispatcher: DispatcherService, private router: Router) {
+  constructor(
+    private route: ActivatedRoute,
+    private dispatcher: DispatcherService,
+    private router: Router) {
     this.model = { name: '', email: '' };
   }
 
@@ -34,6 +37,9 @@ export class NewAccountComponent {
         email: this.model.email,
         name: this.model.name
       }))
-      .then(() => this.router.navigateByUrl('/login'));
+      .then(() => this.router.navigate(
+        [ '..', 'login' ],
+        { relativeTo: this.route }
+      ));
   }
 }

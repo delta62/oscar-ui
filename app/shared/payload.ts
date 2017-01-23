@@ -11,9 +11,6 @@ export function isType(klass: Function, payload: IPayload): boolean {
 
 export interface IPayload { }
 
-@Payload('AppInit')
-export class AppInitPayload implements IPayload { }
-
 @Payload('SaveResponse')
 export class SaveResponsePayload implements IPayload {
   categoryId: string;
@@ -33,6 +30,9 @@ export class LoginPayload implements IPayload {
     this.email = initializer.email;
   }
 }
+
+@Payload('DidLogin')
+export class DidLoginPayload implements IPayload { }
 
 @Payload('NewAccount')
 export class NewAccountPayload implements IPayload {

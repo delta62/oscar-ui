@@ -11,6 +11,7 @@ import { UserService }         from './services/user.service';
 import { AccountStore }   from './stores/account.store';
 import { AuthTokenStore } from './stores/auth-token.store';
 import { CategoryStore }  from './stores/category.store';
+import { LoginStore }     from './stores/login.store';
 import { ResponseStore }  from './stores/response.store';
 import { ScoreStore }     from './stores/score.store';
 
@@ -27,6 +28,7 @@ import { ScoreStore }     from './stores/score.store';
     AccountStore,
     AuthTokenStore,
     CategoryStore,
+    LoginStore,
     ResponseStore,
     ScoreStore
   ]

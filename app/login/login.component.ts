@@ -14,7 +14,7 @@ import { User } from '../shared/model/user';
       </div>
 
       <button [disabled]="!loginForm.valid">Submit</button>
-      <a routerLink="/newaccount">Create Account</a>
+      <a routerLink="../create">Create Account</a>
     </form>`
 })
 export class LoginComponent {

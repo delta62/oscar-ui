@@ -1,13 +1,13 @@
-import { FluxStore } from 'flux-lite';
+import { FluxStore, Action } from 'flux-lite';
 import { Injectable } from '@angular/core';
 import { Category } from '../model/category';
-import { isType, AppInitPayload } from '../payload';
+import { isType, IPayload, DidLoginPayload } from '../payload';
 import { CategoryService } from '../services/category.service';
 import { DispatcherService } from '../services/dispatcher.service';
 import { AuthTokenStore } from './auth-token.store';
 
 @Injectable()
-export class CategoryStore extends FluxStore<Array<Category>, AppInitPayload> {
+export class CategoryStore extends FluxStore<Array<Category>, IPayload> {
 
   constructor(
     dispatcher: DispatcherService,
@@ -25,10 +25,11 @@ export class CategoryStore extends FluxStore<Array<Category>, AppInitPayload> {
     return [ ];
   }
 
-  reduce(state: Array<Category>, payload: AppInitPayload): Array<Category> | Promise<Array<Category>>{
-    if (isType(AppInitPayload, payload)) {
-      let authToken = this.authStore.state;
-      return this.categoryService.getCategories(authToken);
+  reduce(state: Array<Category>, payload: IPayload, action: Action<IPayload>): Array<Category> | Promise<Array<Category>>{
+    if (isType(DidLoginPayload, payload)) {
+      return this.dispatcher.waitFor([ this.authStore.dispatchToken ], action)
+        .then(() => this.authStore.state)
+        .then(token => this.categoryService.getCategories(token))
     }
     return state;
   }
