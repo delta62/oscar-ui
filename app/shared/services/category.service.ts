@@ -19,7 +19,31 @@ export class CategoryService {
       .then(res => res.json());
   }
 
+  closeCategory(authToken: string, categoryId: string): Promise<void> {
+    let headers = new Headers({
+      Authorization: `Bearer ${authToken}`
+    });
+    let body = { closed: new Date() };
+    return this.http.patch(this.buildCategoryUrl(categoryId), body, { headers })
+      .toPromise()
+      .then(_ => null);
+  }
+
+  answerCategory(authToken: string, categoryId: string, answer: string): Promise<void> {
+    let headers = new Headers({
+      Authorization: `Bearer ${authToken}`
+    });
+    let body = { answer };
+    return this.http.patch(this.buildCategoryUrl(categoryId), body, { headers })
+      .toPromise()
+      .then(_ => null);
+  }
+
   private buildCategoriesUrl(): string {
     return `${AppSettings.baseUrl}/category`;
+  }
+
+  private buildCategoryUrl(categoryId: string): string {
+    return `${AppSettings.baseUrl}/category/${categoryId}`;
   }
 }

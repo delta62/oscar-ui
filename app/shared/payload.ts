@@ -53,3 +53,23 @@ export class GetUserScorePayload implements IPayload {
     this.userId = initializer.userId;
   }
 }
+
+@Payload('CategoryClosed')
+export class CategoryClosedPayload implements IPayload {
+  categoryId: string;
+
+  constructor(initializer: CategoryClosedPayload) {
+    this.categoryId = initializer.categoryId;
+  }
+}
+
+@Payload('CategoryAnswered')
+export class CategoryAnsweredPayload implements IPayload {
+  categoryId: string;
+  answer: string;
+
+  constructor(initializer: CategoryAnsweredPayload) {
+    this.categoryId = initializer.categoryId;
+    this.answer = initializer.answer;
+  }
+}

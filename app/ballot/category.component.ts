@@ -11,12 +11,14 @@ import { SaveResponsePayload } from '../shared/payload';
   selector: 'o-category',
   template: `
     <h1>{{ category.name }}</h1>
+    <o-category-admin [category]="category"></o-category-admin>
     <div
       class="category-option"
       *ngFor="let option of category.options; let i = index">
       <input
         (change)="onChoiceChanged(option)"
         [checked]="response.value === option"
+        [disabled]="category.closed"
         type="radio"
         name="category.name"
         [id]="'option-' + i"
@@ -37,10 +39,8 @@ export class CategoryComponent implements DoCheck {
   ngDoCheck(): void {
     this.route.params.subscribe((params: Params) => {
       let categoryId = params['id'];
-      this.category = this.categoryStore.getById(categoryId)
-        || { _id: categoryId, name: '', options: [ ] };
-      this.response = this.responseStore.getCategoryResponse(categoryId)
-        || { category: '', value: '' };
+      this.category = this.categoryStore.getById(categoryId) || Category.makeDefault();
+      this.response = this.responseStore.getCategoryResponse(categoryId) || Response.makeDefault();
     });
   }
 
