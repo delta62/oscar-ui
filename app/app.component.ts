@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { LoginStore }     from './shared/stores/login.store';
+import { AccountStore }   from './shared/stores/account.store';
 import { AuthTokenStore } from './shared/stores/auth-token.store';
 import { CategoryStore }  from './shared/stores/category.store';
 import { ResponseStore }  from './shared/stores/response.store';
@@ -19,6 +20,7 @@ export class AppComponent {
     private dispatcher: DispatcherService,
     private authTokenStore: AuthTokenStore,
     private loginStore: LoginStore,
+    accountStore: AccountStore,
     categoryStore: CategoryStore,
     resopnseStore: ResponseStore) { }
 
