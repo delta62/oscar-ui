@@ -1,7 +1,6 @@
 import { FluxStore, Action } from 'flux-lite';
 import { Injectable } from '@angular/core';
-import { Category } from '../model/category';
-import { AuthToken } from '../model/auth-token';
+import { AuthToken, Category } from '../model';
 import {
   isType,
   IPayload,

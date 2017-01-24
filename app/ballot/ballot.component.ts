@@ -1,7 +1,6 @@
 import { Component, DoCheck } from '@angular/core';
 
-import { User }  from '../shared/model/user';
-import { Score } from '../shared/model/score';
+import { User, Score }  from '../shared/model';
 import { CategoryComponent } from './category.component';
 import { AccountStore } from '../shared/stores/account.store';
 import { ScoreStore }   from '../shared/stores/score.store';

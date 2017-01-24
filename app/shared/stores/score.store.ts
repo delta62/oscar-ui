@@ -1,6 +1,6 @@
 import { FluxStore } from 'flux-lite';
 import { Injectable } from '@angular/core';
-import { Score } from '../model/score';
+import { Score } from '../model';
 import { DispatcherService } from '../services/dispatcher.service';
 
 @Injectable()

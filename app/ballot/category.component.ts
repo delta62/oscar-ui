@@ -1,7 +1,6 @@
 import { Component, DoCheck }     from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Category } from '../shared/model/category';
-import { Response } from '../shared/model/response';
+import { Category, Response } from '../shared/model';
 import { CategoryStore } from '../shared/stores/category.store';
 import { ResponseStore } from '../shared/stores/response.store';
 import { DispatcherService } from '../shared/services/dispatcher.service';

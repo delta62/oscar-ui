@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DispatcherService } from '../shared/services/dispatcher.service';
 import { NewAccountPayload } from '../shared/payload';
-import { User } from '../shared/model/user';
+import { User } from '../shared/model';
 
 @Component({
   selector: 'o-newaccount',

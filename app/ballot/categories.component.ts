@@ -1,9 +1,7 @@
 import { Component,  DoCheck } from '@angular/core';
 import { Router }              from '@angular/router';
 import { DispatcherService } from '../shared/services/dispatcher.service';
-import { Category } from '../shared/model/category';
-import { User }     from '../shared/model/user';
-import { Score }    from '../shared/model/score';
+import { Category, Score, User } from '../shared/model';
 import { CategoryStore } from '../shared/stores/category.store';
 import { AccountStore }  from '../shared/stores/account.store';
 import { ScoreStore }    from '../shared/stores/score.store';

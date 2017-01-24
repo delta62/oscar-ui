@@ -4,7 +4,7 @@ import { isType, LoginPayload } from '../payload';
 import { AuthService } from '../services/auth.service';
 import { LocalStorageService } from '../services/localstorage.service';
 import { DispatcherService } from '../services/dispatcher.service';
-import { AuthToken } from '../model/auth-token';
+import { AuthToken } from '../model';
 
 @Injectable()
 export class AuthTokenStore extends FluxStore<AuthToken, LoginPayload> {
