@@ -2,8 +2,7 @@ import { Component, DoCheck } from '@angular/core';
 
 import { User, Score }  from '../shared/model';
 import { CategoryComponent } from './category.component';
-import { AccountStore } from '../shared/stores/account.store';
-import { ScoreStore }   from '../shared/stores/score.store';
+import { AccountStore, ScoreStore } from '../shared/stores';
 
 @Component({
   selector: 'o-ballot',

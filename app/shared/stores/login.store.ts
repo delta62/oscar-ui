@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FluxStore } from 'flux-lite';
+
 import { IPayload, isType, LoginPayload, DidLoginPayload } from '../payload';
-import { DispatcherService } from '../services/dispatcher.service';
+import { DispatcherService } from '../services';
 
 @Injectable()
 export class LoginStore extends FluxStore<boolean, IPayload> {

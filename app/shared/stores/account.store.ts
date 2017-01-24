@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { isType, IPayload, NewAccountPayload, DidLoginPayload } from '../payload';
 import { User } from '../model';
 import { AuthTokenStore } from './auth-token.store';
-import { DispatcherService } from '../services/dispatcher.service';
-import { UserService } from '../services/user.service';
+import { DispatcherService, UserService } from '../services';
 
 @Injectable()
 export class AccountStore extends FluxStore<User, NewAccountPayload> {

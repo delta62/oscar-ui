@@ -1,10 +1,10 @@
 import { Component, DoCheck }     from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Category, Response } from '../shared/model';
-import { CategoryStore } from '../shared/stores/category.store';
-import { ResponseStore } from '../shared/stores/response.store';
-import { DispatcherService } from '../shared/services/dispatcher.service';
-import { SaveResponsePayload } from '../shared/payload';
+
+import { Category, Response }           from '../shared/model';
+import { CategoryStore, ResponseStore } from '../shared/stores';
+import { DispatcherService }            from '../shared/services';
+import { SaveResponsePayload }          from '../shared/payload';
 
 @Component({
   selector: 'o-category',

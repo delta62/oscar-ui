@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 
-import { LoginStore }     from './shared/stores/login.store';
-import { AccountStore }   from './shared/stores/account.store';
-import { AuthTokenStore } from './shared/stores/auth-token.store';
-import { CategoryStore }  from './shared/stores/category.store';
-import { ResponseStore }  from './shared/stores/response.store';
-import { DispatcherService } from './shared/services/dispatcher.service';
+import {
+  AccountStore,
+  AuthTokenStore,
+  CategoryStore,
+  LoginStore,
+  ResponseStore
+} from './shared/stores';
+
+import { DispatcherService } from './shared/services';
 import { DidLoginPayload }   from './shared/payload';
 
 @Component({

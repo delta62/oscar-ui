@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Category } from '../shared/model';
-import { DispatcherService } from '../shared/services/dispatcher.service';
+
+import { Category }                                       from '../shared/model';
+import { DispatcherService }                              from '../shared/services';
 import { CategoryClosedPayload, CategoryAnsweredPayload } from '../shared/payload';
 
 @Component({
