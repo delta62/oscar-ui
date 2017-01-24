@@ -5,6 +5,7 @@ import { AppRoutingModule }   from './app-routing.module';
 import { BallotModule }       from './ballot/ballot.module';
 import { LoginModule }        from './login/login.module';
 import { SharedModule }       from './shared/shared.module';
+import { ScoreboardModule }   from './scoreboard/scoreboard.module';
 
 import { AppComponent }       from './app.component';
 import { NotFoundComponent }  from './not-found.component';
@@ -15,6 +16,7 @@ import { CopyrightComponent } from './copyright.component';
     BallotModule,
     LoginModule,
     BrowserModule,
+    ScoreboardModule,
     SharedModule,
     AppRoutingModule
   ],
