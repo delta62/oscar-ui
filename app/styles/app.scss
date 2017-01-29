@@ -1,0 +1,7 @@
+@import "colors.scss";
+
+body {
+  background: map-get($colors, black);
+  color: map-get($colors, white);
+  font-family: "source-sans-pro", sans-serif;
+}

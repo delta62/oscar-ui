@@ -6,6 +6,7 @@ import { AccountStore, ScoreStore } from '../shared/stores';
 
 @Component({
   selector: 'o-ballot',
+  styleUrls: ['output/ballot/ballot.css'],
   template: `
     <o-header [user]="user" [score]="score"></o-header>
     <router-outlet></router-outlet>
