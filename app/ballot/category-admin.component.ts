@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { Category }                                       from '../shared/model';
 import { DispatcherService }                              from '../shared/services';
-import { IPayload, CategoryOpenedPayload, CategoryClosedPayload, CategoryAnsweredPayload } from '../shared/payload';
+import { IPayload, AdminCategoryOpenedPayload, AdminCategoryClosedPayload, AdminCategoryAnsweredPayload } from '../shared/payload';
 
 @Component({
   selector: 'o-category-admin',
@@ -35,11 +35,11 @@ export class CategoryAdminComponent {
     let payload: IPayload;
 
     if (this.category.closed) {
-      payload = new CategoryOpenedPayload({
+      payload = new AdminCategoryOpenedPayload({
         categoryId: this.category._id
       });
     } else {
-      payload = new CategoryClosedPayload({
+      payload = new AdminCategoryClosedPayload({
         categoryId: this.category._id
       });
     }
@@ -47,7 +47,7 @@ export class CategoryAdminComponent {
   }
 
   onAnswerChanged(): void {
-    this.dispatcher.dispatch(new CategoryAnsweredPayload({
+    this.dispatcher.dispatch(new AdminCategoryAnsweredPayload({
       categoryId: this.category._id,
       answer: this.answer
     }));

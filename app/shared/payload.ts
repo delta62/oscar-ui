@@ -1,3 +1,5 @@
+import { Identifier } from './model';
+
 export function Payload(type: string) {
   return function PayloadDecorator(target: Function) {
     target['type'] = type;
@@ -13,7 +15,7 @@ export interface IPayload { }
 
 @Payload('SaveResponse')
 export class SaveResponsePayload implements IPayload {
-  categoryId: string;
+  categoryId: Identifier;
   value:      string;
 
   constructor(initializer: SaveResponsePayload) {
@@ -47,7 +49,7 @@ export class NewAccountPayload implements IPayload {
 
 @Payload('GetUserScore')
 export class GetUserScorePayload implements IPayload {
-  userId: string;
+  userId: Identifier;
 
   constructor(initializer: GetUserScorePayload) {
     this.userId = initializer.userId;
@@ -56,7 +58,7 @@ export class GetUserScorePayload implements IPayload {
 
 @Payload('CategoryClosed')
 export class CategoryClosedPayload implements IPayload {
-  categoryId: string;
+  categoryId: Identifier;
 
   constructor(initializer: CategoryClosedPayload) {
     this.categoryId = initializer.categoryId;
@@ -65,16 +67,45 @@ export class CategoryClosedPayload implements IPayload {
 
 @Payload('CategoryOpened')
 export class CategoryOpenedPayload implements IPayload {
-  categoryId: string;
+  categoryId: Identifier;
 
   constructor(initializer: CategoryOpenedPayload) {
     this.categoryId = initializer.categoryId;
   }
 }
 
+@Payload('AdminCategoryClosed')
+export class AdminCategoryClosedPayload implements IPayload {
+  categoryId: Identifier;
+
+  constructor(initializer: AdminCategoryClosedPayload) {
+    this.categoryId = initializer.categoryId;
+  }
+}
+
+@Payload('AdminCategoryOpened')
+export class AdminCategoryOpenedPayload implements IPayload {
+  categoryId: Identifier;
+
+  constructor(initializer: AdminCategoryOpenedPayload) {
+    this.categoryId = initializer.categoryId;
+  }
+}
+
+@Payload('AdminCategoryAnswered')
+export class AdminCategoryAnsweredPayload implements IPayload {
+  categoryId: Identifier;
+  answer: string;
+
+  constructor(initializer: AdminCategoryAnsweredPayload) {
+    this.categoryId = initializer.categoryId;
+    this.answer = initializer.answer;
+  }
+}
+
 @Payload('CategoryAnswered')
 export class CategoryAnsweredPayload implements IPayload {
-  categoryId: string;
+  categoryId: Identifier;
   answer: string;
 
   constructor(initializer: CategoryAnsweredPayload) {

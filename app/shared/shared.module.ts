@@ -9,7 +9,6 @@ import {
   ResponseService,
   ScoreService,
   SocketService,
-  SocketDispatcherService,
   UserService
 } from './services';
 
@@ -19,7 +18,8 @@ import {
   CategoryStore,
   LoginStore,
   ResponseStore,
-  ScoreStore
+  ScoreStore,
+  SocketStore
 } from './stores';
 
 @NgModule({
@@ -32,7 +32,6 @@ import {
     ResponseService,
     ScoreService,
     SocketService,
-    SocketDispatcherService,
     UserService,
 
     AccountStore,
@@ -40,7 +39,8 @@ import {
     CategoryStore,
     LoginStore,
     ResponseStore,
-    ScoreStore
+    ScoreStore,
+    SocketStore
   ]
 })
 export class SharedModule { }

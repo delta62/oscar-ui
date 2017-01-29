@@ -6,10 +6,11 @@ import {
   CategoryStore,
   LoginStore,
   ResponseStore,
-  ScoreStore
+  ScoreStore,
+  SocketStore
 } from './shared/stores';
 
-import { DispatcherService, SocketDispatcherService } from './shared/services';
+import { DispatcherService } from './shared/services';
 import { DidLoginPayload }   from './shared/payload';
 
 @Component({
@@ -28,10 +29,7 @@ export class AppComponent {
     categoryStore: CategoryStore,
     resoponseStore: ResponseStore,
     scoreStore: ScoreStore,
-    socketService: SocketDispatcherService) {
-
-      socketService.registerEvents();
-    }
+    socketStore: SocketStore) { }
 
   onActivate(): void {
     if (this.authTokenStore.isLoggedIn && !this.loginStore.state) {

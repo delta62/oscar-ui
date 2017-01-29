@@ -36,7 +36,7 @@ export class CategoryComponent implements DoCheck {
       private responseStore: ResponseStore) { }
 
   ngDoCheck(): void {
-    this.route.params.subscribe((params: Params) => {
+    this.route.params.subscribe(params => {
       let categoryId = params['id'];
       this.category = this.categoryStore.getById(categoryId) || Category.makeDefault();
       this.response = this.responseStore.getCategoryResponse(categoryId) || Response.makeDefault();
