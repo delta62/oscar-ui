@@ -6,8 +6,11 @@ import {
   isType,
   IPayload,
   DidLoginPayload,
-  CategoryClosedPayload,
+  AdminCategoryClosedPayload,
+  AdminCategoryOpenedPayload,
+  AdminCategoryAnsweredPayload,
   CategoryOpenedPayload,
+  CategoryClosedPayload,
   CategoryAnsweredPayload
 } from '../payload';
 import { CategoryService, DispatcherService } from '../services';
@@ -35,24 +38,47 @@ export class CategoryStore extends FluxStore<Array<Category>, IPayload> {
       return this.waitForAuthToken(action)
         .then(token => this.categoryService.getCategories(token))
     }
-    if (isType(CategoryOpenedPayload, payload)) {
-      let { categoryId } = <CategoryOpenedPayload>payload;
+    if (isType(AdminCategoryOpenedPayload, payload)) {
+      let { categoryId } = <AdminCategoryOpenedPayload>payload;
       return this.waitForAuthToken(action)
         .then(token => this.categoryService.openCategory(token, categoryId))
-        .then(_ => state);
+        .then(_ => this.state);
+    }
+    if (isType(AdminCategoryClosedPayload, payload)) {
+      let { categoryId } = <AdminCategoryClosedPayload>payload;
+      return this.waitForAuthToken(action)
+        .then(token => this.categoryService.closeCategory(token, categoryId))
+        .then(_ => this.state);
+    }
+    if (isType(AdminCategoryAnsweredPayload, payload)) {
+      let { categoryId, answer } = <AdminCategoryAnsweredPayload>payload;
+      return this.waitForAuthToken(action)
+        .then(token => this.categoryService.answerCategory(token, categoryId, answer))
+        .then(_ => this.state);
+    }
+    if (isType(CategoryOpenedPayload, payload)) {
+      let { categoryId } = <CategoryOpenedPayload>payload;
+      return this.state.map(cat => {
+        let ret = Object.assign({ }, cat);
+        ret._id === categoryId && (ret.closed = null);
+        return ret;
+      });
     }
     if (isType(CategoryClosedPayload, payload)) {
       let { categoryId } = <CategoryClosedPayload>payload;
-      return this.waitForAuthToken(action)
-        .then(token => this.categoryService.closeCategory(token, categoryId))
-        .then(_ => state);
+      return this.state.map(cat => {
+        let ret = Object.assign({ }, cat);
+        ret._id === categoryId && (ret.closed = new Date());
+        return ret;
+      });
     }
     if (isType(CategoryAnsweredPayload, payload)) {
       let { categoryId, answer } = <CategoryAnsweredPayload>payload;
-      return this.waitForAuthToken(action)
-        .then(token => this.categoryService.answerCategory(token, categoryId, answer))
-        .then(() => this.state.find(cat => cat._id === categoryId).answer = answer)
-        .then(_ => state);
+      return this.state.map(cat => {
+        let ret = Object.assign({ }, cat);
+        ret._id === categoryId && (ret.answer = answer);
+        return ret;
+      });
     }
     return state;
   }

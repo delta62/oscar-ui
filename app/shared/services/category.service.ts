@@ -16,7 +16,14 @@ export class CategoryService {
     });
     return this.http.get(this.buildCategoriesUrl(), { headers })
       .toPromise()
-      .then(res => res.json());
+      .then(res => res.json())
+      .then(res => {
+        return res.map((cat: Category) => {
+          let ret = Object.assign({ }, cat);
+          ret.closed && (ret.closed = new Date(ret.closed));
+          return ret;
+        });
+      });
   }
 
   closeCategory(authToken: string, categoryId: string): Promise<void> {

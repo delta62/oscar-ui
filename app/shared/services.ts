@@ -5,4 +5,5 @@ export * from './services/localstorage.service';
 export * from './services/response.service';
 export * from './services/score.service';
 export * from './services/socket.service';
+export * from './services/socket-dispatcher.service';
 export * from './services/user.service';
