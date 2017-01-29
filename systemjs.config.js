@@ -16,7 +16,8 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
 
       'rxjs': 'npm:rxjs',
-      'flux-lite': 'npm:flux-lite/dist/flux-lite.umd.js'
+      'flux-lite': 'npm:flux-lite/dist/flux-lite.umd.js',
+      'socket.io-client': 'npm:socket.io-client'
     },
     packages: {
       app: {
@@ -25,6 +26,9 @@
       },
       rxjs: {
         defaultExtension: 'js'
+      },
+      'socket.io-client': {
+        main: './dist/socket.io.js'
       }
     }
   });

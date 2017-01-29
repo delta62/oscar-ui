@@ -29,7 +29,7 @@ export class NewAccountComponent {
     private route: ActivatedRoute,
     private dispatcher: DispatcherService,
     private router: Router) {
-    this.model = { name: '', email: '' };
+    this.model = { name: '', email: '', _id: '', admin: false };
   }
 
   submit(): void {

@@ -21,6 +21,6 @@ export class BallotComponent implements DoCheck {
 
   ngDoCheck(): void {
     this.user = this.accountStore.state;
-    this.score = this.scoreStore.state;
+    this.score = this.scoreStore.getUserScore(this.user._id) || { userId: '', score: 0 };
   }
 }

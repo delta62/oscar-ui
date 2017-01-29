@@ -15,7 +15,7 @@ export class AccountStore extends FluxStore<User, NewAccountPayload> {
   }
 
   getInitialState(): User {
-    return { name: '', email: '' };
+    return { _id: '', name: '', email: '', admin: false };
   }
 
   reduce(state: User, payload: NewAccountPayload, action: Action<IPayload>): User | Promise<User> {

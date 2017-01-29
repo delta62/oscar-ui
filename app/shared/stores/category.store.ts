@@ -7,6 +7,7 @@ import {
   IPayload,
   DidLoginPayload,
   CategoryClosedPayload,
+  CategoryOpenedPayload,
   CategoryAnsweredPayload
 } from '../payload';
 import { CategoryService, DispatcherService } from '../services';
@@ -34,11 +35,16 @@ export class CategoryStore extends FluxStore<Array<Category>, IPayload> {
       return this.waitForAuthToken(action)
         .then(token => this.categoryService.getCategories(token))
     }
+    if (isType(CategoryOpenedPayload, payload)) {
+      let { categoryId } = <CategoryOpenedPayload>payload;
+      return this.waitForAuthToken(action)
+        .then(token => this.categoryService.openCategory(token, categoryId))
+        .then(_ => state);
+    }
     if (isType(CategoryClosedPayload, payload)) {
       let { categoryId } = <CategoryClosedPayload>payload;
       return this.waitForAuthToken(action)
         .then(token => this.categoryService.closeCategory(token, categoryId))
-        .then(() => this.state.find(cat => cat._id === categoryId).closed = new Date())
         .then(_ => state);
     }
     if (isType(CategoryAnsweredPayload, payload)) {

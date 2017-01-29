@@ -63,6 +63,15 @@ export class CategoryClosedPayload implements IPayload {
   }
 }
 
+@Payload('CategoryOpened')
+export class CategoryOpenedPayload implements IPayload {
+  categoryId: string;
+
+  constructor(initializer: CategoryOpenedPayload) {
+    this.categoryId = initializer.categoryId;
+  }
+}
+
 @Payload('CategoryAnswered')
 export class CategoryAnsweredPayload implements IPayload {
   categoryId: string;

@@ -5,7 +5,7 @@ import { User, Score } from '../shared/model';
   selector: 'o-header',
   template: `
       {{ user.name }}
-      {{ score.totalScore }}
+      {{ score.score }}
     `
 })
 export class HeaderComponent {

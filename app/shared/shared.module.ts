@@ -7,6 +7,8 @@ import {
   DispatcherService,
   LocalStorageService,
   ResponseService,
+  ScoreService,
+  SocketService,
   UserService
 } from './services';
 
@@ -27,6 +29,8 @@ import {
     DispatcherService,
     LocalStorageService,
     ResponseService,
+    ScoreService,
+    SocketService,
     UserService,
 
     AccountStore,

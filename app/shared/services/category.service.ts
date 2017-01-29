@@ -1,7 +1,7 @@
 import { Injectable }    from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
-import { AuthToken, Category } from '../model';
+import { AuthToken, Category, Identifier } from '../model';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -23,7 +23,17 @@ export class CategoryService {
     let headers = new Headers({
       Authorization: `Bearer ${authToken}`
     });
-    let body = { closed: new Date() };
+    let body = { closed: true };
+    return this.http.patch(this.buildCategoryUrl(categoryId), body, { headers })
+      .toPromise()
+      .then(_ => null);
+  }
+
+  openCategory(authToken: AuthToken, categoryId: Identifier): Promise<void> {
+    let headers = new Headers({
+      Authorization: `Bearer ${authToken}`
+    });
+    let body = { closed: false };
     return this.http.patch(this.buildCategoryUrl(categoryId), body, { headers })
       .toPromise()
       .then(_ => null);

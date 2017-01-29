@@ -1,4 +1,6 @@
 export type AuthToken = string;
+export type Identifier = string;
+export type TypeOrPromise<T> = T | Promise<T>;
 
 export class Category {
   static makeDefault(): Category {
@@ -11,7 +13,7 @@ export class Category {
     }
   }
 
-  _id: string;
+  _id: Identifier;
   name: string;
   options: Array<string>;
   closed: Date;
@@ -31,8 +33,8 @@ export class Response {
 }
 
 export interface Score {
-  totalScore: number;
-  responses: Array<ResponseScore>;
+  userId: Identifier;
+  score: number;
 }
 
 export interface ResponseScore {
@@ -43,6 +45,8 @@ export interface ResponseScore {
 }
 
 export interface User {
+  _id: Identifier;
   email: string;
   name: string;
+  admin: boolean;
 }

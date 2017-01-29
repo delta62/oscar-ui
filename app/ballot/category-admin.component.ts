@@ -2,14 +2,12 @@ import { Component, Input } from '@angular/core';
 
 import { Category }                                       from '../shared/model';
 import { DispatcherService }                              from '../shared/services';
-import { CategoryClosedPayload, CategoryAnsweredPayload } from '../shared/payload';
+import { IPayload, CategoryOpenedPayload, CategoryClosedPayload, CategoryAnsweredPayload } from '../shared/payload';
 
 @Component({
   selector: 'o-category-admin',
   template: `
-    <button (click)="closeCategory()">
-      {{ category.closed ? 'Open Category' : 'Close Category' }}
-    </button>
+    <button (click)="toggleCategoryClosed()">{{ categoryCloseText }}</button>
     <label for="answer">Correct Answer</label>
     <select
       id="answer"
@@ -29,10 +27,23 @@ export class CategoryAdminComponent {
 
   constructor(private dispatcher: DispatcherService) { }
 
-  closeCategory(): void {
-    this.dispatcher.dispatch(new CategoryClosedPayload({
-      categoryId: this.category._id
-    }));
+  get categoryCloseText(): string {
+    return this.category.closed ? 'Open Category' : 'Close Category';
+  }
+
+  toggleCategoryClosed(): void {
+    let payload: IPayload;
+
+    if (this.category.closed) {
+      payload = new CategoryOpenedPayload({
+        categoryId: this.category._id
+      });
+    } else {
+      payload = new CategoryClosedPayload({
+        categoryId: this.category._id
+      });
+    }
+    this.dispatcher.dispatch(payload);
   }
 
   onAnswerChanged(): void {
