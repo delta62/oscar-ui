@@ -9,7 +9,7 @@ import {
   ScoreStore
 } from './shared/stores';
 
-import { DispatcherService, SocketService } from './shared/services';
+import { DispatcherService, SocketDispatcherService } from './shared/services';
 import { DidLoginPayload }   from './shared/payload';
 
 @Component({
@@ -28,9 +28,9 @@ export class AppComponent {
     categoryStore: CategoryStore,
     resoponseStore: ResponseStore,
     scoreStore: ScoreStore,
-    socketService: SocketService) {
+    socketService: SocketDispatcherService) {
 
-      socketService.connect();
+      socketService.registerEvents();
     }
 
   onActivate(): void {

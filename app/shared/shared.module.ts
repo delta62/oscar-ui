@@ -9,6 +9,7 @@ import {
   ResponseService,
   ScoreService,
   SocketService,
+  SocketDispatcherService,
   UserService
 } from './services';
 
@@ -31,6 +32,7 @@ import {
     ResponseService,
     ScoreService,
     SocketService,
+    SocketDispatcherService,
     UserService,
 
     AccountStore,
