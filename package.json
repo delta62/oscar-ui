@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Frontend application for an Oscars trivia game",
   "scripts": {
-    "start": "concurrently \"tsc -w\" \"lite-server\" \"node-sass app/ -r -o output\"",
+    "start": "concurrently \"tsc -w\" \"lite-server\" \"node-sass app/ -o output -wr\"",
     "build": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js"
   },
   "main": "index.js",
