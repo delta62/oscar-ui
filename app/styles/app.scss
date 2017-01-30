@@ -1,7 +1,34 @@
 @import "colors.scss";
 
 body {
-  background: map-get($colors, black);
-  color: map-get($colors, white);
+  background: color-get(black);
+  color: color-get(white);
   font-family: "source-sans-pro", sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: "futura-pt", sans-serif;
+  text-transform: uppercase;
+}
+
+h1, h2 {
+  font-weight: 400;
+  //letter-spacing: 0.1em;
+}
+
+h3, h4 {
+  font-weight: 300;
+}
+
+h4 {
+  font-size: 0.8em;
+}
+
+.right-arrow {
+  border-top: solid 0.3em color-get(white);
+  border-right: solid 0.3em color-get(white);
+  height: 1em;
+  margin: 0.3em;
+  transform: rotate(45deg);
+  width: 1em;
 }

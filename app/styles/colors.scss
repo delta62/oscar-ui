@@ -1,5 +1,15 @@
 $colors: (
   black: hsl(0,0%,10%),
-  white: hsla(0,0%,100%,0.9),
+  white: hsl(0,0%,100%),
   gold:  hsl(45,67%,47%)
 );
+
+@function color-get($color) {
+  @return map-get($colors, $color);
+}
+
+@function color-get-alpha($color, $alpha) {
+  $color: map-get($colors, $color);
+
+  @return hsla(hue($color), saturation($color), lightness($color), $alpha);
+}
