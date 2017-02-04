@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Frontend application for an Oscars trivia game",
   "scripts": {
-    "start": "concurrently \"tsc -w\" \"lite-server\" \"node-sass app/ -o output -wr\"",
-    "build": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js"
+    "start": "concurrently \"node-sass app/ -o output\" \"node-sass app/ -o output -wr \" \"tsc -w\" \"lite-server\"",
+    "build": "node-sass app/ -o output && ngc -p tsconfig-aot.json && rollup -c rollup-config.js"
   },
   "main": "index.js",
   "repository": "git@github.com:delta62/oscar-ui.git",
