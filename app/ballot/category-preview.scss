@@ -25,14 +25,26 @@ $top-stop: color-get-alpha(white, 0.3);
     transition: background-color 0.2s;
 
     .left-content, .right-content {
-      justify-content: center;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       padding: 0.5em;
+
+      & * {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
+
 
     .left-content {
       flex: 1;
+      max-width: calc(100% - 4em);
+    }
+
+    .right-content {
+      width: 2.5em;
     }
 
     h1, h2, h3,h4 {
