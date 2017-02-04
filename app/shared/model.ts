@@ -44,9 +44,20 @@ export interface ResponseScore {
   incorrect?: number;
 }
 
-export interface User {
+export class User {
+  static makeDefault(): User {
+    return {
+      _id: null,
+      email: '',
+      firstName: '',
+      lastName: '',
+      admin: false
+    };
+  }
+
   _id: Identifier;
   email: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   admin: boolean;
 }

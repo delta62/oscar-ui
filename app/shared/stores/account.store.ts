@@ -14,14 +14,14 @@ export class AccountStore extends FluxStore<User, NewAccountPayload> {
     super(dispatcher);
   }
 
-  getInitialState(): User {
-    return { _id: '', name: '', email: '', admin: false };
+  protected getInitialState(): User {
+    return User.makeDefault();
   }
 
-  reduce(state: User, payload: NewAccountPayload, action: Action<IPayload>): User | Promise<User> {
+  protected reduce(state: User, payload: NewAccountPayload, action: Action<IPayload>): User | Promise<User> {
     if (isType(NewAccountPayload, payload)) {
       return this.userService
-        .createAccount(payload.email, payload.name)
+        .createAccount(payload.email, `${payload.firstName} ${payload.lastName}`)
         .then(() => state);
     }
     if (isType(DidLoginPayload, payload)) {

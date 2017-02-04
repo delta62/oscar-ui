@@ -33,17 +33,22 @@ export class LoginPayload implements IPayload {
   }
 }
 
+@Payload('Logout')
+export class LogoutPayload implements IPayload { }
+
 @Payload('DidLogin')
 export class DidLoginPayload implements IPayload { }
 
 @Payload('NewAccount')
 export class NewAccountPayload implements IPayload {
   email: string;
-  name:  string;
+  firstName:  string;
+  lastName: string;
 
   constructor(initializer: NewAccountPayload) {
     this.email = initializer.email;
-    this.name = initializer.name;
+    this.firstName = initializer.firstName;
+    this.lastName = initializer.lastName;
   }
 }
 

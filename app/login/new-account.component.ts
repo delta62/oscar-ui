@@ -15,8 +15,13 @@ import { User }              from '../shared/model';
       </div>
 
       <div class="form-item">
-        <label for="name">Name</label>
-        <input id="name" name="name" [(ngModel)]="model.name" required>
+        <label for="first-name">First Name</label>
+        <input id="first-name" name="first-name" [(ngModel)]="model.firstName" required>
+      </div>
+
+      <div class="form-item">
+        <label for="last-name">Last Name</label>
+        <input id="last-name" name="last-name" [(ngModel)]="model.lastName" required>
       </div>
 
       <button [disabled]="!accountForm.valid">Submit</button>
@@ -29,14 +34,15 @@ export class NewAccountComponent {
     private route: ActivatedRoute,
     private dispatcher: DispatcherService,
     private router: Router) {
-    this.model = { name: '', email: '', _id: '', admin: false };
+    this.model = { firstName: '', lastName: '', email: '', _id: '', admin: false };
   }
 
   submit(): void {
     this.dispatcher
       .dispatch(new NewAccountPayload({
         email: this.model.email,
-        name: this.model.name
+        firstName: this.model.firstName,
+        lastName: this.model.lastName
       }))
       .then(() => this.router.navigate(
         [ '..', 'login' ],
