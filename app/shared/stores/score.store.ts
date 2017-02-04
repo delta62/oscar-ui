@@ -15,7 +15,7 @@ export class ScoreStore extends FluxStore<Array<Score>, IPayload> {
     super(dispatcher);
   }
 
-  getInitialState(): Array<Score> {
+  protected getInitialState(): Array<Score> {
     return [ ];
   }
 
@@ -23,7 +23,7 @@ export class ScoreStore extends FluxStore<Array<Score>, IPayload> {
     return this.state.find(score => score.userId == userId);
   }
 
-  reduce(state: Array<Score>, payload: IPayload, action: Action<IPayload>): TypeOrPromise<Array<Score>> {
+  protected reduce(state: Array<Score>, payload: IPayload, action: Action<IPayload>): TypeOrPromise<Array<Score>> {
     if (isType(DidLoginPayload, payload)) {
       return this.dispatcher.waitFor([ this.authTokenStore.dispatchToken ], action)
         .then(() => this.authTokenStore.state)

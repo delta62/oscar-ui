@@ -32,15 +32,10 @@ export class AccountStore extends FluxStore<User, NewAccountPayload> {
     return state;
   }
 
-  private getCurrentUser(): Promise<User> {
+  private getCurrentUser(): User {
     let authToken = this.authTokenStore.state;
     let authUser = this.getFromAuthStore();
-    if (authUser === null) return Promise.resolve(null);
-    return this.userService.getUser(authToken)
-      .then(u => ({
-        name: u.name,
-        email: u.email
-      }));
+    return authUser;
   }
 
   private getFromAuthStore(): User {

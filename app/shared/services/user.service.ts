@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { User } from '../model';
+import { AuthToken, User } from '../model';
 
 @Injectable()
 export class UserService {
@@ -14,7 +14,7 @@ export class UserService {
       .then(_ => null);
   }
 
-  getUser(authToken: string): Promise<User> {
+  getUsers(authToken: AuthToken): Promise<Array<User>> {
     let headers = new Headers({ Authorization: `Bearer ${authToken}` });
     return this.http.get(this.buildAccountUrl(), { headers })
       .toPromise()
