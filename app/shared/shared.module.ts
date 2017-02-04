@@ -22,6 +22,8 @@ import {
   SocketStore
 } from './stores';
 
+import { HeaderComponent } from './header.component';
+
 @NgModule({
   imports: [ HttpModule ],
   providers: [
@@ -41,6 +43,8 @@ import {
     ResponseStore,
     ScoreStore,
     SocketStore
-  ]
+  ],
+  declarations: [ HeaderComponent ],
+  exports: [ HeaderComponent ]
 })
 export class SharedModule { }

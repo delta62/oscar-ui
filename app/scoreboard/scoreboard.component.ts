@@ -1,25 +1,24 @@
 import { Component, DoCheck } from '@angular/core';
-import { ScoreStore } from '../shared/stores';
-import { Score } from '../shared/model';
+
+import { ScoreStore, AccountStore } from '../shared/stores';
+import { Score, User } from '../shared/model';
 
 @Component({
   selector: 'o-scoreboard',
   template: `
-    <h1>Scoreboard</h1>
-    <div>
-      total score: {{ score.totalScore }}
-    </div>
-    <div *ngFor="let response of score.responses">
-      {{ response.name }}: {{ response.score }}
-    </div>
-  `
+    <o-header [user]="user" [score]="score"></o-header>
+    <router-outlet></router-outlet>`
 })
 export class ScoreboardComponent implements DoCheck {
+  user: User;
   score: Score;
 
-  constructor(private scoreStore: ScoreStore) { }
+  constructor(
+    private scoreStore: ScoreStore,
+    private accountStore: AccountStore) { }
 
   ngDoCheck(): void {
-    this.score = this.scoreStore.getUserScore('');
+    this.user = this.accountStore.state;
+    this.score = this.scoreStore.getUserScore(this.user._id) || { userId: '', score: 0 };
   }
 }

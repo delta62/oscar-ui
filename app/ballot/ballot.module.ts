@@ -3,6 +3,7 @@ import { FormsModule }  from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { SharedModule }        from '../shared/shared.module';
 import { BallotRoutingModule } from './ballot-routing.module';
 
 import { BallotComponent }          from './ballot.component';
@@ -10,13 +11,13 @@ import { CategoriesComponent }      from './categories.component';
 import { CategoryAdminComponent }   from './category-admin.component';
 import { CategoryComponent }        from './category.component';
 import { CategoryPreviewComponent } from './category-preview.component';
-import { HeaderComponent }          from './header.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
+    SharedModule,
     BallotRoutingModule
   ],
   declarations: [
@@ -24,8 +25,7 @@ import { HeaderComponent }          from './header.component';
     CategoriesComponent,
     CategoryAdminComponent,
     CategoryComponent,
-    CategoryPreviewComponent,
-    HeaderComponent
+    CategoryPreviewComponent
   ]
 })
 export class BallotModule { }
