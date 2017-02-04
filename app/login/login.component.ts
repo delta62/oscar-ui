@@ -24,7 +24,7 @@ export class LoginComponent {
   constructor(
       private dispatcher: DispatcherService,
       private router: Router) {
-    this.model = { name: '', email: '', _id: '', admin: false };
+    this.model = User.makeDefault();
   }
 
   onSubmit(): void {
