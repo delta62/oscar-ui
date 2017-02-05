@@ -8,21 +8,24 @@ import { SaveResponsePayload }          from '../shared/payload';
 
 @Component({
   selector: 'o-category',
+  styleUrls: ['output/ballot/category.css'],
   template: `
     <h1>{{ category.name }}</h1>
     <o-category-admin [category]="category"></o-category-admin>
     <div
       class="category-option"
       *ngFor="let option of category.options; let i = index">
-      <input
-        (change)="onChoiceChanged(option)"
-        [checked]="response.value === option"
-        [disabled]="category.closed"
-        type="radio"
-        name="category.name"
-        [id]="'option-' + i"
-        value="option">
-      <label [for]="'option-' + i">{{ option }}</label>
+      <div class="text-container">
+        <input
+          (change)="onChoiceChanged(option)"
+          [checked]="response.value === option"
+          [disabled]="category.closed"
+          type="radio"
+          name="category.name"
+          [id]="'option-' + i"
+          value="option">
+        <label [for]="'option-' + i">{{ option }}</label>
+      </div>
     </div>`
 })
 export class CategoryComponent implements DoCheck {
