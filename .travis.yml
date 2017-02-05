@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- 6
+deploy:
+  provider: npm
+  email: sam.noedel@gmail.com
+  api_key:
+    secure: ZqT3IfrF3F2Z21GwtEV+aDxIv8tf0JEc+lrrGb78WH/8OX4UR4DAhTL6HrtmGh+wZJAi3skqrS0eOrEkLPm2lfnWE5Z3g+jl3cbNa/CptF9XGZcxYnT430bP4qOa/GTzBdkckGhvmzd2pq6nI/dDxQ5wm46WYBOev34pkTaa8feIHWPnbtOytGjJg5kvSqIZQHKgh0269RsVqpiiRUxLQgZ0fF72j4T5Ugj6kNt8ItgPZa4ekAjvGQc5Lk/kUDXFsBunB6Z+2cZWfx6OUQ78P2Vztsj5hC/CO36RT+rL+T3CANXWsBJa2VmtyTsNwN0tdeGCG2VQUfocc38y53LpMxakxKJuUXlEdSCgITxGYAR825sAtzvP1ZD5zz8/qgruaWP/33g419jlcRI2w6llJqHDQy4vQTZh51qkAE70nB7DTzfm2pjKDFnfDMNcFLANMO+MODixXYdE1sByBjQk1H5Jig/JIcvxzQRa3DSWYPAZ55g99W1T7d809xX6H/ipIZXAOGZ1j6EU8oqnqQIZ2bURKAuIx+K1f8ig1KPUMSqGdnjR/UtI0GFvtEpM82x73lTxrNgONnH3uBHgd1fazgFXHpP3DBCZe9bSvgnF+l6mQos+mcTKFOdYoa549pTaC4pCldTDZCdZCBtkEiZwf9PhM2U/+FJX65PD+BvWO2U=
+  on:
+    repo: delta62/oscar-ui
