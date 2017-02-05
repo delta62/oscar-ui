@@ -7,6 +7,7 @@ import { DispatcherService }            from '../shared/services';
 import { SaveResponsePayload }          from '../shared/payload';
 
 @Component({
+  moduleId: module.id,
   selector: 'o-category',
   styleUrls: [ './category.css' ],
   template: `

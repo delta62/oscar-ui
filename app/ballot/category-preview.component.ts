@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Category } from '../shared/model';
 
 @Component({
+  moduleId: module.id,
   selector: 'o-category-preview',
   styleUrls: [ './category-preview.css' ],
   template: `
