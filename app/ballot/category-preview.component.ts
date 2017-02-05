@@ -2,8 +2,9 @@ import { Component, Input } from '@angular/core';
 import { Category } from '../shared/model';
 
 @Component({
+  moduleId: module.id,
   selector: 'o-category-preview',
-  styleUrls: ['output/ballot/category-preview.css'],
+  styleUrls: [ './category-preview.css' ],
   template: `
     <div>
       <div class='text-container'>
