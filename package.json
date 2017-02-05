@@ -9,6 +9,7 @@
     "ngc": "ngc -p tsconfig-aot.json",
     "rollup": "rollup -c rollup-config.js"
   },
+  "files": [ "oscars.min.js" ],
   "main": "index.js",
   "repository": "git@github.com:delta62/oscar-ui.git",
   "author": "Sam Noedel <sam.noedel@gmail.com>",

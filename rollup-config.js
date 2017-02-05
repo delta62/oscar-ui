@@ -5,7 +5,7 @@ import uglify      from 'rollup-plugin-uglify';
 
 export default {
   entry: 'output/app/main-aot.js',
-  dest: 'dist/oscars.min.js',
+  dest: 'oscars.min.js',
   sourceMap: false,
   format: 'iife',
   plugins: [
