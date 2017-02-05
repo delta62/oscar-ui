@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as io from 'socket.io-client';
 
 export type EmitterCallback = (payload: any) => void;
 

@@ -8,7 +8,7 @@ import { SaveResponsePayload }          from '../shared/payload';
 
 @Component({
   selector: 'o-category',
-  styleUrls: ['output/ballot/category.css'],
+  styleUrls: [ './category.css' ],
   template: `
     <h1>{{ category.name }}</h1>
     <o-category-admin [category]="category"></o-category-admin>

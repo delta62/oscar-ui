@@ -8,7 +8,7 @@ import { LogoutPayload }     from './payload';
 @Component({
   selector: 'o-header',
   template: `
-      <span (click)="onLogout()">{{ user.name }}</span>
+      <span (click)="onLogout()">{{ user.firstName }} {{ user.lastName }}</span>
       <span (click)="onScoreClick()">{{ score.score }}</span>
     `
 })

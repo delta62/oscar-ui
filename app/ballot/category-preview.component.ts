@@ -3,7 +3,7 @@ import { Category } from '../shared/model';
 
 @Component({
   selector: 'o-category-preview',
-  styleUrls: ['output/ballot/category-preview.css'],
+  styleUrls: [ './category-preview.css' ],
   template: `
     <div>
       <div class='text-container'>
