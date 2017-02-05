@@ -4,7 +4,7 @@
   "description": "Frontend application for an Oscars trivia game",
   "scripts": {
     "start": "concurrently \"node-sass app/ -o output\" \"node-sass app/ -o output -wr \" \"tsc -w\" \"lite-server\"",
-    "prepublish": "node-sass app/ -o app && ngc -p tsconfig-aot.json && rollup -c rollup-config.js"
+    "prepublish": "node-sass app/ -o app --output-style compressed && ngc -p tsconfig-aot.json && rollup -c rollup-config.js"
   },
   "main": "index.js",
   "repository": "git@github.com:delta62/oscar-ui.git",
