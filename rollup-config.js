@@ -5,7 +5,7 @@ import uglify      from 'rollup-plugin-uglify';
 
 export default {
   entry: 'output/app/main-aot.js',
-  dest: 'oscars.min.js',
+  dest: 'dist/oscars.min.js',
   sourceMap: false,
   format: 'iife',
   plugins: [
@@ -20,5 +20,9 @@ export default {
       }
     }),
     uglify()
-  ]
+  ],
+  onwarn: warning => {
+    if (warning.code === 'THIS_IS_UNDEFINED') return;
+    console.warn(warning.message);
+  }
 }
