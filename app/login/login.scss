@@ -1,0 +1,28 @@
+// login/login
+@import 'app/styles/colors.scss';
+
+$outer-stop: color-get-alpha(black, 0.1);
+$inner-stop: color-get-alpha(gold, 1);
+
+:host {
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form-item {
+      position: relative;
+
+      input {
+        display: block;
+        background: none;
+      }
+
+    }
+  }
+
+
+  border-top: solid 0.1em;
+  border-image: linear-gradient(90deg, $outer-stop, $inner-stop, $outer-stop);
+}

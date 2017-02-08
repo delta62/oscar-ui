@@ -1,0 +1,58 @@
+@import '../styles/colors.scss';
+
+:host {
+	$color: color-get(gold);
+  $highlight: color-get-alpha(white, 0.8);
+	$underline: 0.1em;
+
+  & > div {
+    position: relative;
+    display: inline-block;
+    border-bottom: solid 0.2em $color;
+
+    label {
+      display: block;
+      font-size: 0.75em;
+      color: $color;
+      text-transform: uppercase;
+      transition: 0.2s color;
+
+      input {
+        background-color: transparent;
+        border: none;
+        color: $color;
+        margin: 0;
+        font-family: "source-sans-pro";
+        font-size: 1em;
+        padding: 0.5em 0;
+        width: 18em;
+
+        &:focus {
+          color: $highlight;
+          outline: none;
+        }
+      }
+    }
+
+    &.active {
+      label {
+        color: $highlight;
+      }
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &::after {
+      width: 0;
+      position: absolute;
+      bottom: -0.2em;
+      left: 0;
+      background-color: $highlight;
+      height: 0.2em;
+      content: '';
+      transition: 0.2s;
+    }
+  }
+}

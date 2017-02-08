@@ -7,11 +7,12 @@ import { User }              from '../shared/model';
 
 @Component({
   selector: 'o-login',
+  styleUrls: ['output/login/login.css'],
   template: `
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
-      <div class="form-item">
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" [(ngModel)]="model.email" required>
+      <div class="form-item text-input">
+        <o-textinput [label]="'Email'" [required]="true"></o-textinput>
+        <!-- <input id="email" type="email" name="email" [(ngModel)]="model.email" required> -->
       </div>
 
       <button [disabled]="!loginForm.valid">Submit</button>

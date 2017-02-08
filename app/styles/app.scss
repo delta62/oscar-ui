@@ -2,8 +2,12 @@
 
 body {
   background: color-get(black);
-  color: color-get(white);
+}
+
+body, input, textarea, select, button {
   font-family: "source-sans-pro", sans-serif;
+  font-weight: 300;
+  color: color-get(white);
 }
 
 h1, h2, h3, h4 {
@@ -24,11 +28,19 @@ h4 {
   font-size: 0.8em;
 }
 
-@mixin big-label {
+label {
   font-family: "futura-pt", sans-serif;
-  font-size: 1.5em;
-  font-weight: 400;
   text-transform: uppercase;
+
+  &.small {
+    font-size: 0.7em;
+    font-weight: 300;
+  }
+
+  &.big {
+    font-size: 1.5em;
+    font-weight: 400;
+  }
 }
 
 .arrow {
@@ -45,33 +57,4 @@ h4 {
   .right { transform: rotate(45deg); }
 
   .up { transform: rotate(-45deg); }
-}
-
-@mixin big-radio {
-  display: none;
-
-  & + label {
-    display: inline-flex;
-    align-items: center;
-    flex: 1;
-
-    &::before {
-      background-color: color-get-alpha(black, 90%);
-      border-radius: 0.1em;
-      border: solid 0.1em color-get(gold);
-      content: '';
-      display: inline-block;
-      flex-shrink: 0;
-      height: 1em;
-      width: 1em;
-      transition: border-color 0.2s, background-color 0.2s;
-
-      margin-right: 0.5em;
-    }
-  }
-
-  &:checked + label::before {
-    background-color: color-get(gold);
-    border-color: color-get(white);
-  }
 }

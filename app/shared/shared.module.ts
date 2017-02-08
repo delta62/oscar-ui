@@ -1,5 +1,6 @@
-import { NgModule }   from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { NgModule }     from '@angular/core';
+import { HttpModule }   from '@angular/http';
+import { CommonModule } from '@angular/common';
 
 import {
   AuthService,
@@ -23,9 +24,10 @@ import {
 } from './stores';
 
 import { HeaderComponent } from './header.component';
+import { TextInputComponent } from './textinput.component';
 
 @NgModule({
-  imports: [ HttpModule ],
+  imports: [ HttpModule, CommonModule ],
   providers: [
     AuthService,
     CategoryService,
@@ -44,7 +46,7 @@ import { HeaderComponent } from './header.component';
     ScoreStore,
     SocketStore
   ],
-  declarations: [ HeaderComponent ],
-  exports: [ HeaderComponent ]
+  declarations: [ HeaderComponent, TextInputComponent ],
+  exports: [ HeaderComponent, TextInputComponent ]
 })
 export class SharedModule { }

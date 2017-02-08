@@ -1,0 +1,28 @@
+@mixin big-radio {
+  display: none;
+
+  & + label {
+    display: inline-flex;
+    align-items: center;
+    flex: 1;
+
+    &::before {
+      background-color: color-get-alpha(black, 90%);
+      border-radius: 0.1em;
+      border: solid 0.1em color-get(gold);
+      content: '';
+      display: inline-block;
+      flex-shrink: 0;
+      height: 1em;
+      width: 1em;
+      transition: border-color 0.2s, background-color 0.2s;
+
+      margin-right: 0.5em;
+    }
+  }
+
+  &:checked + label::before {
+    background-color: color-get(gold);
+    border-color: color-get(white);
+  }
+}
