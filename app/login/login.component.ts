@@ -12,7 +12,6 @@ import { User }              from '../shared/model';
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
       <div class="form-item text-input">
         <o-textinput [label]="'Email'" [required]="true"></o-textinput>
-        <!-- <input id="email" type="email" name="email" [(ngModel)]="model.email" required> -->
       </div>
 
       <button [disabled]="!loginForm.valid">Submit</button>
