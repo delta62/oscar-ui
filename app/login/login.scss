@@ -14,15 +14,6 @@ $inner-stop: color-get-alpha(gold, 1);
     & > * {
       margin: 0.5em 0;
     }
-    .form-item {
-      position: relative;
-
-      input {
-        display: block;
-        background: none;
-      }
-
-    }
   }
 
 

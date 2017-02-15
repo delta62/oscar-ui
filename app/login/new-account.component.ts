@@ -6,22 +6,17 @@ import { NewAccountPayload } from '../shared/payload';
 import { User }              from '../shared/model';
 
 @Component({
+  moduleId: module.id,
   selector: 'o-newaccount',
+  styleUrls: [ './new-account.css' ],
   template: `
     <form (ngSubmit)="submit()" #accountForm="ngForm" novalidate>
       <div class="form-item">
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" [(ngModel)]="model.email" required>
+        <o-textinput [label]="'Email'" [required]="true" (keyup)="handleChange($event, 'email')"></o-textinput>
       </div>
 
       <div class="form-item">
-        <label for="first-name">First Name</label>
-        <input id="first-name" name="first-name" [(ngModel)]="model.firstName" required>
-      </div>
-
-      <div class="form-item">
-        <label for="last-name">Last Name</label>
-        <input id="last-name" name="last-name" [(ngModel)]="model.lastName" required>
+        <o-textinput [label]="'Name'" [required]="true" (keyup)="handleChange($event, 'name')"></o-textinput>
       </div>
 
       <button [disabled]="!accountForm.valid">Submit</button>
@@ -34,15 +29,18 @@ export class NewAccountComponent {
     private route: ActivatedRoute,
     private dispatcher: DispatcherService,
     private router: Router) {
-    this.model = { firstName: '', lastName: '', email: '', _id: '', admin: false };
+    this.model = User.makeDefault();
+    }
+
+  handleChange(event: any, prop: string): void {
+    this.model[prop] = event.target.value;
   }
 
   submit(): void {
     this.dispatcher
       .dispatch(new NewAccountPayload({
         email: this.model.email,
-        firstName: this.model.firstName,
-        lastName: this.model.lastName
+        name: this.model.name
       }))
       .then(() => this.router.navigate(
         [ '..', 'login' ],

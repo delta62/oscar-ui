@@ -10,8 +10,12 @@ import { User }              from '../shared/model';
   styleUrls: ['output/login/login.css'],
   template: `
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
-      <div class="form-item text-input">
-        <o-textinput [label]="'Email'" [required]="true"></o-textinput>
+      <div>
+        <o-textinput
+          [label]="'Email'"
+          [required]="true"
+          (keyup)="handleChange($event, 'email')">
+        </o-textinput>
       </div>
       <o-button [disabled]="!loginForm.valid" [label]="'Submit'"></o-button>
       <a routerLink="../create">Create Account</a>
@@ -24,6 +28,10 @@ export class LoginComponent {
       private dispatcher: DispatcherService,
       private router: Router) {
     this.model = User.makeDefault();
+  }
+
+  handleChange(event: any, prop: string): void {
+    this.model[prop] = event.target.value;
   }
 
   onSubmit(): void {

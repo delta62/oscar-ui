@@ -42,13 +42,11 @@ export class DidLoginPayload implements IPayload { }
 @Payload('NewAccount')
 export class NewAccountPayload implements IPayload {
   email: string;
-  firstName:  string;
-  lastName: string;
+  name: string;
 
   constructor(initializer: NewAccountPayload) {
     this.email = initializer.email;
-    this.firstName = initializer.firstName;
-    this.lastName = initializer.lastName;
+    this.name = initializer.name;
   }
 }
 
