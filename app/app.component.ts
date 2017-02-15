@@ -14,10 +14,16 @@ import { DispatcherService } from './shared/services';
 import { DidLoginPayload }   from './shared/payload';
 
 @Component({
+  moduleId: module.id,
   selector: 'o-app',
+  styleUrls: [ './app.css' ],
   template: `
-    <router-outlet (activate)="onActivate()"></router-outlet>
-    <o-copyright></o-copyright>
+    <div class='body'>
+      <router-outlet (activate)="onActivate()"></router-outlet>
+    </div>
+    <div class='footer'>
+      <o-copyright></o-copyright>
+    </div>
   `,
 })
 export class AppComponent {
