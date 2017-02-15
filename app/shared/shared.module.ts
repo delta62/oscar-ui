@@ -23,8 +23,9 @@ import {
   SocketStore
 } from './stores';
 
-import { HeaderComponent } from './header.component';
+import { HeaderComponent }    from './header.component';
 import { TextInputComponent } from './textinput.component';
+import { ButtonComponent }    from './button.component';
 
 @NgModule({
   imports: [ HttpModule, CommonModule ],
@@ -46,7 +47,7 @@ import { TextInputComponent } from './textinput.component';
     ScoreStore,
     SocketStore
   ],
-  declarations: [ HeaderComponent, TextInputComponent ],
-  exports: [ HeaderComponent, TextInputComponent ]
+  declarations: [ HeaderComponent, TextInputComponent, ButtonComponent ],
+  exports: [ HeaderComponent, TextInputComponent, ButtonComponent ]
 })
 export class SharedModule { }

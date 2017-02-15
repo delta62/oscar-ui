@@ -10,9 +10,7 @@ import { Component, Input } from '@angular/core';
         <div>{{label}}</div>
         <input (focus)="toggleActive(true)" (blur)="toggleActive(false)" [required]="required">
       </label>
-    </div>
-
-  `,
+    </div>`
 })
 export class TextInputComponent {
   active: boolean = false;

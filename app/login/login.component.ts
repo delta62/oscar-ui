@@ -13,8 +13,7 @@ import { User }              from '../shared/model';
       <div class="form-item text-input">
         <o-textinput [label]="'Email'" [required]="true"></o-textinput>
       </div>
-
-      <button [disabled]="!loginForm.valid">Submit</button>
+      <o-button [disabled]="!loginForm.valid" [label]="'Submit'"></o-button>
       <a routerLink="../create">Create Account</a>
     </form>`
 })
