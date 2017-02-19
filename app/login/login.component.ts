@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer, ElementRef, ViewChild } from '@angular/core';
 import { Router }    from '@angular/router';
 
 import { DispatcherService }        from '../shared/services';
@@ -9,7 +9,7 @@ import { User }                     from '../shared/model';
   selector: 'o-login',
   styleUrls: ['output/login/login.css'],
   template: `
-    <form novalidate>
+    <form (ngSubmit)="onSubmit()" novalidate>
       <div>
         <o-textinput type="email" name="email" label="Email"
           #emailControl="ngModel"
@@ -20,8 +20,7 @@ import { User }                     from '../shared/model';
         </o-textinput>
         <o-button label="Log In"
           [hidden]="isPinStep"
-          [disabled]="!emailControl.valid"
-          (click)="nextStep()">
+          [disabled]="!emailControl.valid">
         </o-button>
       </div>
 
@@ -29,43 +28,60 @@ import { User }                     from '../shared/model';
         Check your email for a one-time PIN to log in with.
       </div>
 
-      <div [hidden]="!isPinStep">
+      <div *ngIf="isPinStep">
         <o-textinput label="PIN" name="pin"
           #pinControl="ngModel"
           [required]="true"
           [(ngModel)]="pin"
           pattern="[A-Za-z0-9]{6}">
         </o-textinput>
-        <o-button label="Log In"
-          [disabled]="!pinControl.valid"
-          (click)="submitPin()">
+        <o-button label="Log In" [disabled]="!pinControl.valid">
         </o-button>
       </div>
+
+      <span [hidden]="!invalidAuth">
+        Hmm... I don't recognize that email or your PIN was incorrect.
+      </span>
 
       <a routerLink="../create">Create Account</a>
     </form>`
 })
 export class LoginComponent {
-  email: string;
-  pin: string;
-  step: number = 1;
+  email:       string;
+  pin:         string;
+  step:        number = 1;
+  invalidAuth: boolean = false;
 
   constructor(
       private dispatcher: DispatcherService,
       private router: Router) { }
 
-  nextStep() {
-    this.step = 2;
-    this.dispatcher.dispatch(new LoginPayload({ email: this.email }))
-  }
-
   get isPinStep() {
     return this.step === 2;
   }
 
-  submitPin(): void {
+  onSubmit(): void {
+    this.step === 1
+      ? this.submitStep1()
+      : this.submitStep2();
+  }
+
+  submitStep1(): void {
+    this.step = 2;
+    this.dispatcher.dispatch(new LoginPayload({ email: this.email }))
+  }
+
+  submitStep2(): void {
     this.dispatcher
       .dispatch(new PinPayload({ email: this.email, pin: this.pin }))
-      .then(() => this.router.navigateByUrl('/ballot'));
+      .then(() => this.router.navigateByUrl('/ballot'))
+      .catch(this.resetForm.bind(this));
+  }
+
+  resetForm(): void {
+    this.step = 1;
+    this.pin = '';
+    this.email = '';
+    this.invalidAuth = true;
   }
 };

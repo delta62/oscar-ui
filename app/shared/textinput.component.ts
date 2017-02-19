@@ -56,6 +56,10 @@ export class TextInputComponent implements ControlValueAccessor {
     this.active = true;
   }
 
+  focus(): void {
+    this.renderer.invokeElementMethod(this.input, 'focus');
+  }
+
   writeValue(val: any): void {
     const normalizedVal = val || '';
     this.renderer.setElementProperty(this.input.nativeElement, 'value', normalizedVal);
