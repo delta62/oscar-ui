@@ -9,34 +9,61 @@ import { User }              from '../shared/model';
   selector: 'o-login',
   styleUrls: ['output/login/login.css'],
   template: `
-    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
+    <form novalidate>
       <div>
         <o-textinput
-          [label]="'Email'"
+          #emailControl
+          type="email"
+          name="email"
+          label="Email"
+          [(ngModel)]="email"
+          email
           [required]="true"
-          (keyup)="handleChange($event, 'email')">
+          [disabled]="isPinStep">
         </o-textinput>
+        <o-button
+          label="Next"
+          [hidden]="isPinStep"
+          [disabled]="!emailControl.valid"
+          (click)="nextStep()">
+        </o-button>
       </div>
-      <o-button [disabled]="!loginForm.valid" [label]="'Submit'"></o-button>
+
+      <div [hidden]="!isPinStep">
+        <o-textinput
+          #pin
+          label="PIN"
+          [required]="true"
+          pattern="[A-Za-z0-9]{6}">
+        </o-textinput>
+        <o-button [disabled]="!pin.valid" label="Log In"></o-button>
+      </div>
+
       <a routerLink="../create">Create Account</a>
     </form>`
 })
 export class LoginComponent {
-  model: User;
+  email: string;
+  pin: string;
+  step: number;
 
   constructor(
       private dispatcher: DispatcherService,
       private router: Router) {
-    this.model = User.makeDefault();
+    this.step = 1;
   }
 
-  handleChange(event: any, prop: string): void {
-    this.model[prop] = event.target.value;
+  nextStep() {
+    this.step = 2;
+  }
+
+  get isPinStep() {
+    return this.step === 2;
   }
 
   onSubmit(): void {
     this.dispatcher
-      .dispatch(new LoginPayload({ email: this.model.email }))
+      .dispatch(new LoginPayload({ email: this.email }))
       .then(() => this.router.navigateByUrl('/ballot'));
   }
 };
