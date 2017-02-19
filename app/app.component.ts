@@ -7,7 +7,8 @@ import {
   LoginStore,
   ResponseStore,
   ScoreStore,
-  SocketStore
+  SocketStore,
+  UserStore
 } from './shared/stores';
 
 import { DispatcherService } from './shared/services';
@@ -35,7 +36,8 @@ export class AppComponent {
     categoryStore: CategoryStore,
     resoponseStore: ResponseStore,
     scoreStore: ScoreStore,
-    socketStore: SocketStore) { }
+    socketStore: SocketStore,
+    userStore: UserStore) { }
 
   onActivate(): void {
     if (this.authTokenStore.isLoggedIn && !this.loginStore.state) {

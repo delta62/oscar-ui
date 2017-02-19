@@ -2,7 +2,7 @@ import { Component, Renderer, ElementRef, ViewChild } from '@angular/core';
 import { Router }    from '@angular/router';
 
 import { DispatcherService }        from '../shared/services';
-import { LoginPayload, PinPayload } from '../shared/payload';
+import { LoginPayload, PinPayload, DidLoginPayload } from '../shared/payload';
 import { User }                     from '../shared/model';
 
 @Component({
@@ -75,6 +75,7 @@ export class LoginComponent {
     this.dispatcher
       .dispatch(new PinPayload({ email: this.email, pin: this.pin }))
       .then(() => this.router.navigateByUrl('/ballot'))
+      .then(() => this.dispatcher.dispatch(new DidLoginPayload()))
       .catch(this.resetForm.bind(this));
   }
 

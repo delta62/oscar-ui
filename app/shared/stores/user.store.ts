@@ -25,6 +25,7 @@ export class UserStore extends FluxStore<Array<User>, IPayload> {
 
   protected reduce(state: Array<User>, payload: IPayload, action: Action<IPayload>): TypeOrPromise<Array<User>> {
     if (isType(DidLoginPayload, payload)) {
+      console.log('did login');
       return this.dispatcher.waitFor([ this.authTokenStore.dispatchToken ], action)
         .then(() => this.authTokenStore.state)
         .then(token => this.userService.getUsers(token));
