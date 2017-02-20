@@ -6,8 +6,9 @@ import { LoginPayload, PinPayload, DidLoginPayload } from '../shared/payload';
 import { User }                     from '../shared/model';
 
 @Component({
+  moduleId: module.id,
   selector: 'o-login',
-  styleUrls: ['output/login/login.css'],
+  styleUrls: [ './login.css' ],
   template: `
     <form (ngSubmit)="onSubmit()" novalidate>
       <div>
