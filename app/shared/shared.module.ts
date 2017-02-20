@@ -20,7 +20,8 @@ import {
   LoginStore,
   ResponseStore,
   ScoreStore,
-  SocketStore
+  SocketStore,
+  UserStore
 } from './stores';
 
 import { HeaderComponent }    from './header.component';
@@ -45,7 +46,8 @@ import { ButtonComponent }    from './button.component';
     LoginStore,
     ResponseStore,
     ScoreStore,
-    SocketStore
+    SocketStore,
+    UserStore
   ],
   declarations: [ HeaderComponent, TextInputComponent, ButtonComponent ],
   exports: [ HeaderComponent, TextInputComponent, ButtonComponent ]
