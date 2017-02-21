@@ -9,5 +9,9 @@ module.exports = {
       index: './index.html',
       htmlAcceptHeaders: ['text/html', 'application/xhtml+xml']
     })
-  ]
+  ],
+  serveStatic: [{
+    route: '/images',
+    dir:   'node_modules/oscar-resources/images'
+  }]
 };

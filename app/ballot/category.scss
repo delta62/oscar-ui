@@ -9,6 +9,8 @@ $top-stop: color-get-alpha(white, 0.3);
 
   .category-option {
     background-image: linear-gradient(to top, $bottom-stop, $top-stop);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: block;
     height: 10em;
     position: relative;
