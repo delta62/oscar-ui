@@ -1,7 +1,7 @@
 import { Component, DoCheck } from '@angular/core';
 
 import { ScoreStore, AccountStore } from '../shared/stores';
-import { Score, User } from '../shared/model';
+import { UserScore, User } from '../shared/model';
 
 @Component({
   selector: 'o-scoreboard',
@@ -11,7 +11,7 @@ import { Score, User } from '../shared/model';
 })
 export class ScoreboardComponent implements DoCheck {
   user: User;
-  score: Score;
+  score: UserScore;
 
   constructor(
     private scoreStore: ScoreStore,
@@ -19,6 +19,6 @@ export class ScoreboardComponent implements DoCheck {
 
   ngDoCheck(): void {
     this.user = this.accountStore.state;
-    this.score = this.scoreStore.getUserScore(this.user._id) || { userId: '', score: 0 };
+    this.score = this.scoreStore.getUserScore(this.user._id) || UserScore.makeDefault();
   }
 }
