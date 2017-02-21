@@ -33,6 +33,17 @@ export class LoginPayload implements IPayload {
   }
 }
 
+@Payload('Pin')
+export class PinPayload implements IPayload {
+  email: string;
+  pin: string;
+
+  constructor(initializer: PinPayload) {
+    this.email = initializer.email;
+    this.pin = initializer.pin;
+  }
+}
+
 @Payload('Logout')
 export class LogoutPayload implements IPayload { }
 
@@ -42,13 +53,11 @@ export class DidLoginPayload implements IPayload { }
 @Payload('NewAccount')
 export class NewAccountPayload implements IPayload {
   email: string;
-  firstName:  string;
-  lastName: string;
+  name: string;
 
   constructor(initializer: NewAccountPayload) {
     this.email = initializer.email;
-    this.firstName = initializer.firstName;
-    this.lastName = initializer.lastName;
+    this.name = initializer.name;
   }
 }
 

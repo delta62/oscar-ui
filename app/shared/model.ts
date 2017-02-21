@@ -49,15 +49,13 @@ export class User {
     return {
       _id: null,
       email: '',
-      firstName: '',
-      lastName: '',
+      name: '',
       admin: false
     };
   }
 
   _id: Identifier;
   email: string;
-  firstName: string;
-  lastName: string;
+  name: string;
   admin: boolean;
 }

@@ -9,18 +9,24 @@ import 'rxjs/add/operator/toPromise';
 export class AuthService {
   constructor(private http: Http) { }
 
-  login(email: string): Promise<AuthToken> {
-    return this.http.post(this.buildLoginUrl(), this.buildLoginBody(email))
+  login(email: string): Promise<void> {
+    return <any>this.http
+      .post(this.loginUrl, { email })
+      .toPromise();
+  }
+
+  loginWithPin(email: string, pin: string): Promise<AuthToken> {
+    return this.http.post(this.pinUrl, { email, pin })
       .toPromise()
       .then(res => res.json())
       .then(json => json.token);
   }
 
-  private buildLoginBody(email: string): any {
-    return { email };
+  private get loginUrl(): string {
+    return `${AppSettings.baseUrl}/login`;
   }
 
-  private buildLoginUrl(): string {
-    return `${AppSettings.baseUrl}/login`;
+  private get pinUrl(): string {
+    return `${AppSettings.baseUrl}/pin`;
   }
 }

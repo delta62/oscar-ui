@@ -21,7 +21,7 @@ export class AccountStore extends FluxStore<User, NewAccountPayload> {
   protected reduce(state: User, payload: NewAccountPayload, action: Action<IPayload>): User | Promise<User> {
     if (isType(NewAccountPayload, payload)) {
       return this.userService
-        .createAccount(payload.email, `${payload.firstName} ${payload.lastName}`)
+        .createAccount(payload.email, payload.name)
         .then(() => state);
     }
     if (isType(DidLoginPayload, payload)) {

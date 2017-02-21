@@ -11,14 +11,8 @@ $inner-stop: color-get-alpha(gold, 1);
     flex-direction: column;
     align-items: center;
 
-    .form-item {
-      position: relative;
-
-      input {
-        display: block;
-        background: none;
-      }
-
+    & > * {
+      margin: 0.5em 0;
     }
   }
 
