@@ -15,7 +15,8 @@ import { SaveResponsePayload }          from '../shared/payload';
     <o-category-admin [category]="category"></o-category-admin>
     <div
       class="category-option"
-      *ngFor="let option of category.options; let i = index">
+      *ngFor="let option of category.options; let i = index"
+      [ngStyle]="{'background-image': this.getSlug(option)}">
       <div class="text-container">
         <input
           (change)="onChoiceChanged(option)"
@@ -53,4 +54,7 @@ export class CategoryComponent implements DoCheck {
       value: option
     }));
   }
+
+  getSlug(option: string): string {
+    return 'url(images/' + option.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s/g, '-') + '-wide.jpg)'; }
 }
