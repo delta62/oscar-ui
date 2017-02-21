@@ -6,6 +6,7 @@ import { ScoreboardRoutingModule } from './scoreboard-routing.module';
 
 import { ScoreboardComponent } from './scoreboard.component';
 import { ScoreListComponent }  from './score-list.component';
+import { UserScoreComponent }  from './user-score.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ScoreListComponent }  from './score-list.component';
   ],
   declarations: [
     ScoreboardComponent,
-    ScoreListComponent
+    ScoreListComponent,
+    UserScoreComponent
   ]
 })
 export class ScoreboardModule { }
