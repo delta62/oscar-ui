@@ -1,7 +1,7 @@
 import { Component, DoCheck } from '@angular/core';
 
-import { User, Score }  from '../shared/model';
-import { CategoryComponent } from './category.component';
+import { User, UserScore }          from '../shared/model';
+import { CategoryComponent }        from './category.component';
 import { AccountStore, ScoreStore } from '../shared/stores';
 
 @Component({
@@ -13,7 +13,7 @@ import { AccountStore, ScoreStore } from '../shared/stores';
 })
 export class BallotComponent implements DoCheck {
   user: User;
-  score: Score;
+  score: UserScore;
 
   constructor(
     private scoreStore: ScoreStore,
@@ -21,6 +21,6 @@ export class BallotComponent implements DoCheck {
 
   ngDoCheck(): void {
     this.user = this.accountStore.state;
-    this.score = this.scoreStore.getUserScore(this.user._id) || { userId: '', score: 0 };
+    this.score = this.scoreStore.getUserScore(this.user._id) || UserScore.makeDefault();
   }
 }

@@ -37,11 +37,31 @@ export interface Score {
   score: number;
 }
 
+export interface UserScoreData {
+  totalScore: number;
+  responses: { [ category: string ]: ResponseScore };
+}
+
 export interface ResponseScore {
   score: number;
   first?: number;
   correct?: number;
   incorrect?: number;
+}
+
+export class UserScore {
+  static makeDefault(): UserScore {
+    return {
+      userId: null,
+      score: {
+        totalScore: 0,
+        responses: { }
+      }
+    };
+  }
+
+  userId: Identifier;
+  score: UserScoreData;
 }
 
 export class User {
