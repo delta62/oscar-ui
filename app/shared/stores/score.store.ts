@@ -1,13 +1,13 @@
 import { FluxStore, Action } from 'flux-lite';
 import { Injectable }        from '@angular/core';
 
-import { Score, TypeOrPromise, Identifier }  from '../model';
+import { UserScore, TypeOrPromise, Identifier }  from '../model';
 import { DidLoginPayload, isType, IPayload } from '../payload';
 import { DispatcherService, ScoreService }   from '../services';
 import { AuthTokenStore }                    from '../stores';
 
 @Injectable()
-export class ScoreStore extends FluxStore<Array<Score>, IPayload> {
+export class ScoreStore extends FluxStore<Array<UserScore>, IPayload> {
   constructor(
       dispatcher: DispatcherService,
       private scoreService: ScoreService,
@@ -15,15 +15,15 @@ export class ScoreStore extends FluxStore<Array<Score>, IPayload> {
     super(dispatcher);
   }
 
-  protected getInitialState(): Array<Score> {
+  protected getInitialState(): Array<UserScore> {
     return [ ];
   }
 
-  getUserScore(userId: Identifier): Score {
+  getUserScore(userId: Identifier): UserScore {
     return this.state.find(score => score.userId == userId);
   }
 
-  protected reduce(state: Array<Score>, payload: IPayload, action: Action<IPayload>): TypeOrPromise<Array<Score>> {
+  protected reduce(state: Array<UserScore>, payload: IPayload, action: Action<IPayload>): TypeOrPromise<Array<UserScore>> {
     if (isType(DidLoginPayload, payload)) {
       return this.dispatcher.waitFor([ this.authTokenStore.dispatchToken ], action)
         .then(() => this.authTokenStore.state)

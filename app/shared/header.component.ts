@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router }           from '@angular/router';
 
-import { User, Score }       from './model';
+import { UserScore, User }   from './model';
 import { DispatcherService } from './services';
 import { LogoutPayload }     from './payload';
 
@@ -9,12 +9,12 @@ import { LogoutPayload }     from './payload';
   selector: 'o-header',
   template: `
       <span (click)="onLogout()">{{ user.name }}</span>
-      <span (click)="onScoreClick()">{{ score.score }}</span>
+      <span (click)="onScoreClick()">{{ score.score.totalScore }}</span>
     `
 })
 export class HeaderComponent {
   @Input() user: User;
-  @Input() score: Score;
+  @Input() score: UserScore;
 
   constructor(
     private dispatcher: DispatcherService,
