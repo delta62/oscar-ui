@@ -6,8 +6,6 @@ import { UserScore, User, UserScoreData } from '../shared/model';
 @Component({
   selector: 'o-score-list',
   template: `
-    <h1>Scoreboard</h1>
-
     <o-user-score
       *ngFor="let score of scores"
       [score]="score.score"
