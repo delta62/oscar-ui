@@ -11,7 +11,7 @@ import { SaveResponsePayload }          from '../shared/payload';
   selector: 'o-category',
   styleUrls: [ './category.css' ],
   template: `
-    <h1>{{ category.name }}</h1>
+    <o-sub-header [title]="category.name"></o-sub-header>
     <o-category-admin [category]="category"></o-category-admin>
     <div
       class="category-option"

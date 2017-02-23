@@ -7,6 +7,7 @@ import { UserScore, User } from '../shared/model';
   selector: 'o-scoreboard',
   template: `
     <o-header [user]="user" [score]="score"></o-header>
+    <o-sub-header title="Scoreboard"></o-sub-header>
     <router-outlet></router-outlet>`
 })
 export class ScoreboardComponent implements DoCheck {

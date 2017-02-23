@@ -27,6 +27,7 @@ import {
 import { HeaderComponent }    from './header.component';
 import { TextInputComponent } from './textinput.component';
 import { ButtonComponent }    from './button.component';
+import { SubHeaderComponent } from './sub-header.component';
 
 @NgModule({
   imports: [ HttpModule, CommonModule ],
@@ -49,7 +50,17 @@ import { ButtonComponent }    from './button.component';
     SocketStore,
     UserStore
   ],
-  declarations: [ HeaderComponent, TextInputComponent, ButtonComponent ],
-  exports: [ HeaderComponent, TextInputComponent, ButtonComponent ]
+  declarations: [
+    HeaderComponent,
+    TextInputComponent,
+    ButtonComponent,
+    SubHeaderComponent
+  ],
+  exports: [
+    HeaderComponent,
+    TextInputComponent,
+    ButtonComponent,
+    SubHeaderComponent
+  ]
 })
 export class SharedModule { }
