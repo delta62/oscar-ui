@@ -127,3 +127,6 @@ export class CategoryAnsweredPayload implements IPayload {
     this.answer = initializer.answer;
   }
 }
+
+@Payload('MenuToggle')
+export class MenuTogglePayload implements IPayload { }
