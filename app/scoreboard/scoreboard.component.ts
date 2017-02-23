@@ -6,12 +6,11 @@ import { UserScore, User } from '../shared/model';
 @Component({
   selector: 'o-scoreboard',
   template: `
-    <o-header [user]="user" [score]="score"></o-header>
+    <o-header [score]="score"></o-header>
     <o-sub-header title="Scoreboard"></o-sub-header>
     <router-outlet></router-outlet>`
 })
 export class ScoreboardComponent implements DoCheck {
-  user: User;
   score: UserScore;
 
   constructor(
@@ -19,7 +18,7 @@ export class ScoreboardComponent implements DoCheck {
     private accountStore: AccountStore) { }
 
   ngDoCheck(): void {
-    this.user = this.accountStore.state;
-    this.score = this.scoreStore.getUserScore(this.user._id) || UserScore.makeDefault();
+    let user = this.accountStore.state;
+    this.score = this.scoreStore.getUserScore(user._id) || UserScore.makeDefault();
   }
 }

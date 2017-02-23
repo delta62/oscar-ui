@@ -7,12 +7,11 @@ import { AccountStore, ScoreStore } from '../shared/stores';
 @Component({
   selector: 'o-ballot',
   template: `
-    <o-header [user]="user" [score]="score"></o-header>
+    <o-header [score]="score"></o-header>
     <router-outlet></router-outlet>
   `
 })
 export class BallotComponent implements DoCheck {
-  user: User;
   score: UserScore;
 
   constructor(
@@ -20,7 +19,7 @@ export class BallotComponent implements DoCheck {
     private accountStore: AccountStore) { }
 
   ngDoCheck(): void {
-    this.user = this.accountStore.state;
-    this.score = this.scoreStore.getUserScore(this.user._id) || UserScore.makeDefault();
+    let user = this.accountStore.state;
+    this.score = this.scoreStore.getUserScore(user._id) || UserScore.makeDefault();
   }
 }

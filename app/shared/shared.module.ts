@@ -18,6 +18,7 @@ import {
   AuthTokenStore,
   CategoryStore,
   LoginStore,
+  MenuVisibilityStore,
   ResponseStore,
   ScoreStore,
   SocketStore,
@@ -28,6 +29,7 @@ import { HeaderComponent }    from './header.component';
 import { TextInputComponent } from './textinput.component';
 import { ButtonComponent }    from './button.component';
 import { SubHeaderComponent } from './sub-header.component';
+import { MenuComponent }      from './menu.component';
 
 @NgModule({
   imports: [ HttpModule, CommonModule ],
@@ -45,6 +47,7 @@ import { SubHeaderComponent } from './sub-header.component';
     AuthTokenStore,
     CategoryStore,
     LoginStore,
+    MenuVisibilityStore,
     ResponseStore,
     ScoreStore,
     SocketStore,
@@ -54,13 +57,15 @@ import { SubHeaderComponent } from './sub-header.component';
     HeaderComponent,
     TextInputComponent,
     ButtonComponent,
-    SubHeaderComponent
+    SubHeaderComponent,
+    MenuComponent
   ],
   exports: [
     HeaderComponent,
     TextInputComponent,
     ButtonComponent,
-    SubHeaderComponent
+    SubHeaderComponent,
+    MenuComponent
   ]
 })
 export class SharedModule { }
