@@ -1,15 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router }                   from '@angular/router';
 
-import { DispatcherService } from './services';
-import { User }              from './model';
-import { LogoutPayload }     from './payload';
+import { DispatcherService }                from './services';
+import { User }                             from './model';
+import { LogoutPayload, MenuTogglePayload } from './payload';
 
 @Component({
+  moduleId: module.id,
   selector: 'o-menu',
+  styleUrls: [ './menu.css' ],
   template: `
-    <span>{{ user.name }}</span>
-    <a (click)="onLogoutClick()">Log Out</a>
+    <div class="backdrop" (click)="onBackdropClick()"></div>
+    <ol class="menu">
+      <span>{{ user.name }}</span>
+      <a (click)="onLogoutClick()">Log Out</a>
+    </ol>
   `
 })
 export class MenuComponent implements OnInit {
@@ -24,5 +29,9 @@ export class MenuComponent implements OnInit {
   onLogoutClick(): void {
     this.dispatcher.dispatch(new LogoutPayload());
     this.router.navigateByUrl('/account/login');
+  }
+
+  onBackdropClick(): void {
+    this.dispatcher.dispatch(new MenuTogglePayload());
   }
 }
