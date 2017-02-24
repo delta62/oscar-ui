@@ -1,0 +1,33 @@
+//shared/menu
+@import 'app/styles/colors.scss';
+
+:host {
+
+  .backdrop {
+    background-color: transparent;
+    bottom: 0;
+    left: -100vw;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 90;
+  }
+
+  .menu {
+    background-color: color-get(black);
+    bottom: 0;
+    left: -80vw;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    transition: left .2s;
+    width: 80vw;
+    z-index: 100;
+  }
+
+  &.visible .backdrop,
+  &.visible .menu {
+    left: 0;
+  }
+}
