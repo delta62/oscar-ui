@@ -1,10 +1,10 @@
 import { Component, DoCheck }     from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { Category, Response }           from '../shared/model';
-import { CategoryStore, ResponseStore } from '../shared/stores';
-import { DispatcherService }            from '../shared/services';
-import { SaveResponsePayload }          from '../shared/payload';
+import { Category, Response }                         from '../shared/model';
+import { CategoryStore, ResponseStore, AccountStore } from '../shared/stores';
+import { DispatcherService }                          from '../shared/services';
+import { SaveResponsePayload }                        from '../shared/payload';
 
 @Component({
   moduleId: module.id,
@@ -12,11 +12,11 @@ import { SaveResponsePayload }          from '../shared/payload';
   styleUrls: [ './category.css' ],
   template: `
     <o-sub-header [title]="category.name"></o-sub-header>
-    <o-category-admin [category]="category"></o-category-admin>
+    <o-category-admin *ngIf="isAdmin" [category]="category"></o-category-admin>
     <div
       class="category-option"
       *ngFor="let option of category.options; let i = index"
-      [ngStyle]="{'background-image': this.getSlug(option)}">
+      [ngStyle]="{'background-image': getSlug(option)}">
       <div class="text-container">
         <input
           (change)="onChoiceChanged(option)"
@@ -38,6 +38,7 @@ export class CategoryComponent implements DoCheck {
       private dispatcher: DispatcherService,
       private route: ActivatedRoute,
       private categoryStore: CategoryStore,
+      private authStore: AccountStore,
       private responseStore: ResponseStore) { }
 
   ngDoCheck(): void {
@@ -53,6 +54,10 @@ export class CategoryComponent implements DoCheck {
       categoryId: this.category._id,
       value: option
     }));
+  }
+
+  get isAdmin(): boolean {
+    return this.authStore.state.admin;
   }
 
   getSlug(option: string): string {
