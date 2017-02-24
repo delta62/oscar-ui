@@ -61,5 +61,6 @@ export class CategoryComponent implements DoCheck {
   }
 
   getSlug(option: string): string {
-    return 'url(images/' + option.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s/g, '-') + '-wide.jpg)'; }
+    return 'url(images/' + option.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s/g, '-') + '-wide.jpg)';
+  }
 }
