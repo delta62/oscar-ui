@@ -10,9 +10,20 @@ import { LogoutPayload, MenuTogglePayload } from './payload';
   selector: 'o-header',
   styleUrls: [ './header.css' ],
   template: `
+    <div class='left-content'>
       <span (click)="onMenuClick()" class='open-btn'>…</span>
-      <span (click)="onScoreClick()">{{ score.score.totalScore }}</span>
-    `
+    </div>
+    <div class='right-content'>
+      <div class='score' (click)="onScoreClick()">
+        <h3>{{ score.score.totalScore }}</h3>
+        <h6>Score</h6>
+      </div>
+      <div class='title' (click)="onTitleClick()">
+        <h6>The</h6>
+        <h5>Oscars</h5>
+        <h5>Ballot</h5>
+      </div>
+    </div>`
 })
 export class HeaderComponent {
   @Input() score: UserScore;
@@ -23,6 +34,10 @@ export class HeaderComponent {
 
   onScoreClick(): void {
     this.router.navigateByUrl('/scoreboard');
+  }
+
+  onTitleClick(): void {
+    this.router.navigateByUrl('/ballot');
   }
 
   onMenuClick(): void {

@@ -13,8 +13,9 @@ body, input, textarea, select, button {
   color: color-get(white);
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
   font-family: "futura-pt", sans-serif;
+  margin: 0;
   text-transform: uppercase;
 }
 
@@ -23,9 +24,12 @@ h1, h2, h3 {
   //letter-spacing: 0.1em;
 }
 
+h4, h5, h6 {
+  font-weight: 300;
+}
+
 h4 {
   font-size: 0.8em;
-  font-weight: 300;
 }
 
 label {
