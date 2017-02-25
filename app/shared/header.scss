@@ -26,6 +26,22 @@
     padding: 0.2em 1em;
   }
 
+  .open-btn {
+    display: flex;
+    flex-direction: column;
+    height: 2em;
+    justify-content: space-around;
+    padding: 0 1em;
+
+    & > * {
+      background-color: color-get-alpha(gold, 0.5);
+      border: solid 2px color-get-alpha(gold, 0.8);
+      border-radius: 0.1em;
+      width: 0.2em;
+      height: 0.2em;
+    }
+  }
+
   .score {
     background-image: linear-gradient(135deg, color-get-alpha(white, 0.05),
       color-get-alpha(white, 0.15), color-get-alpha(white, 0.1));

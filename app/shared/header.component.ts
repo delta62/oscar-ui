@@ -11,7 +11,11 @@ import { LogoutPayload, MenuTogglePayload } from './payload';
   styleUrls: [ './header.css' ],
   template: `
     <div class='left-content'>
-      <span (click)="onMenuClick()" class='open-btn'>…</span>
+      <div (click)="onMenuClick()" class='open-btn'>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
     <div class='right-content'>
       <div class='score' (click)="onScoreClick()">
