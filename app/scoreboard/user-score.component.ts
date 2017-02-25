@@ -5,14 +5,12 @@ import { User, UserScoreData, ResponseScore } from '../shared/model';
 @Component({
   selector: 'o-user-score',
   template: `
-    {{ user.name }}: {{ userScore.totalScore }}
-
-    <div *ngFor="let response of responses">
-      <span>{{ response.name }}: {{ response.score }}</span>
-      <span *ngIf="response.correct">Correct Answer: {{ reponse.correct }}</span>
-      <span *ngIf="response.incorrect">Incorrect Answer: {{ reponse.incorrect }}</span>
-      <span *ngIf="response.first">First Correct Answer: {{ reponse.first }}</span>
-    </div>
+    <h2>{{ user.name }}: {{ userScore.totalScore }}</h2>
+    <o-category-score
+      *ngFor="let response of responses"
+      [score]="response"
+      [categoryName]="response.name">
+    </o-category-score>
   `
 })
 export class UserScoreComponent {
