@@ -27,30 +27,23 @@ export class CategoryService {
   }
 
   closeCategory(authToken: string, categoryId: string): Promise<void> {
-    let headers = new Headers({
-      Authorization: `Bearer ${authToken}`
-    });
-    let body = { closed: true };
-    return this.http.patch(this.buildCategoryUrl(categoryId), body, { headers })
-      .toPromise()
-      .then(_ => null);
+    return this.makeRequest(authToken, categoryId, null, true);
   }
 
   openCategory(authToken: AuthToken, categoryId: Identifier): Promise<void> {
-    let headers = new Headers({
-      Authorization: `Bearer ${authToken}`
-    });
-    let body = { closed: false };
-    return this.http.patch(this.buildCategoryUrl(categoryId), body, { headers })
-      .toPromise()
-      .then(_ => null);
+    return this.makeRequest(authToken, categoryId, null, false);
   }
 
   answerCategory(authToken: string, categoryId: string, answer: string): Promise<void> {
+    return this.makeRequest(authToken, categoryId, answer, true);
+  }
+
+  private makeRequest(authToken: string, categoryId: string, answer: string, closed: boolean): Promise<void> {
     let headers = new Headers({
       Authorization: `Bearer ${authToken}`
     });
-    let body = { answer };
+    let body: any = { closed };
+    if (answer) body.answer = answer;
     return this.http.patch(this.buildCategoryUrl(categoryId), body, { headers })
       .toPromise()
       .then(_ => null);

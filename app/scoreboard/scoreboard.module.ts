@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { SharedModule }            from '../shared/shared.module';
 import { ScoreboardRoutingModule } from './scoreboard-routing.module';
 
-import { ScoreboardComponent } from './scoreboard.component';
-import { ScoreListComponent }  from './score-list.component';
-import { UserScoreComponent }  from './user-score.component';
+import { ScoreboardComponent }    from './scoreboard.component';
+import { ScoreListComponent }     from './score-list.component';
+import { UserScoreComponent }     from './user-score.component';
+import { CategoryScoreComponent } from './category-score.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { UserScoreComponent }  from './user-score.component';
     ScoreboardRoutingModule
   ],
   declarations: [
+    CategoryScoreComponent,
     ScoreboardComponent,
     ScoreListComponent,
     UserScoreComponent
