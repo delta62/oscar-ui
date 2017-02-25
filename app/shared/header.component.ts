@@ -6,9 +6,11 @@ import { DispatcherService }                from './services';
 import { LogoutPayload, MenuTogglePayload } from './payload';
 
 @Component({
+  moduleId: module.id,
   selector: 'o-header',
+  styleUrls: [ './header.css' ],
   template: `
-      <span (click)="onMenuClick()">Menu</span>
+      <span (click)="onMenuClick()" class='open-btn'>…</span>
       <span (click)="onScoreClick()">{{ score.score.totalScore }}</span>
     `
 })

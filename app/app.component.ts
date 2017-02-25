@@ -23,12 +23,7 @@ import { DidLoginPayload }   from './shared/payload';
   styleUrls: [ './app.css' ],
   template: `
     <o-menu [user]="user" [ngClass]="{ visible: showMenu }"></o-menu>
-    <div class='body'>
-      <router-outlet (activate)="onActivate()"></router-outlet>
-    </div>
-    <div class='footer'>
-      <o-copyright></o-copyright>
-    </div>
+    <router-outlet (activate)="onActivate()"></router-outlet>
   `,
 })
 export class AppComponent implements DoCheck {

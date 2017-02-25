@@ -1,17 +1,6 @@
 @import 'styles/colors.scss';
 
 :host {
-  .body {
-    display: block;
-    min-height: calc(100% - 2.5em);
-  }
-
-  .footer {
-    align-items: center;
-    border-top: solid 1px color-get-alpha(gold, 0.2);
-    box-sizing: border-box;
-    display: flex;
-    height: 2.5em;
-    padding: 0 1em;
-  }
+  display: block;
+  height: 100vh;
 }
