@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  padding: 0 0.5em;
+
+  .back {
+    display: flex;
+    align-items: center;
+    padding: 0.3em 0;
+  }
+}
