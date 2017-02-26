@@ -8,7 +8,7 @@ import { UserScore, User } from '../shared/model';
   styleUrls: [ './scoreboard.css' ],
   selector: 'o-scoreboard',
   template: `
-    <o-header [score]="score"></o-header>
+    <o-header [score]="score" [place]="place"></o-header>
     <div class='body'>
       <o-sub-header title="Scoreboard"></o-sub-header>
       <router-outlet></router-outlet>
@@ -17,6 +17,7 @@ import { UserScore, User } from '../shared/model';
 })
 export class ScoreboardComponent implements DoCheck {
   score: UserScore;
+  place: number;
 
   constructor(
     private scoreStore: ScoreStore,
@@ -25,5 +26,6 @@ export class ScoreboardComponent implements DoCheck {
   ngDoCheck(): void {
     let user = this.accountStore.state;
     this.score = this.scoreStore.getUserScore(user._id) || UserScore.makeDefault();
+    this.place = this.scoreStore.getUserPlacement(user._id);
   }
 }

@@ -28,6 +28,21 @@ export class ScoreStore extends FluxStore<Array<UserScore>, IPayload> {
     return this.state.find(score => score.userId == userId);
   }
 
+  getUserPlacement(userId: Identifier): number {
+    let userScore = this.getUserScore(userId);
+    if (!userScore) return null;
+
+    let biggestObservedScore = 0, placement = 1;
+    let sortedScores = this.state.slice().sort((a, b) => a.score.totalScore - b.score.totalScore);
+    for (let i = 0; i < sortedScores.length; i += 1) {
+      if (sortedScores[i] === userScore) return placement;
+      if (sortedScores[i].score.totalScore > biggestObservedScore) {
+        biggestObservedScore = sortedScores[i].score.totalScore;
+        placement += 1;
+      }
+    }
+  }
+
   protected reduce(state: Array<UserScore>, payload: IPayload, action: Action<IPayload>): TypeOrPromise<Array<UserScore>> {
     if (isType(DidLoginPayload, payload) || isType(CategoryAnsweredPayload, payload)) {
       return this.dispatcher.waitFor([ this.authTokenStore.dispatchToken ], action)

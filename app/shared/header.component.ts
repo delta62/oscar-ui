@@ -10,19 +10,19 @@ import { LogoutPayload, MenuTogglePayload } from './payload';
   selector: 'o-header',
   styleUrls: [ './header.css' ],
   template: `
-    <div class='left-content'>
-      <div (click)="onMenuClick()" class='open-btn'>
+    <div class="left-content">
+      <div (click)="onMenuClick()" class="open-btn">
         <div></div>
         <div></div>
         <div></div>
       </div>
     </div>
-    <div class='right-content'>
-      <div class='score' (click)="onScoreClick()">
+    <div class="right-content">
+      <div [ngClass]="klass" (click)="onScoreClick()">
         <h3>{{ score.score.totalScore }}</h3>
         <h6>Score</h6>
       </div>
-      <div class='title' (click)="onTitleClick()">
+      <div class="title" (click)="onTitleClick()">
         <h6>The</h6>
         <h5>Oscars</h5>
         <h5>Ballot</h5>
@@ -30,6 +30,7 @@ import { LogoutPayload, MenuTogglePayload } from './payload';
     </div>`
 })
 export class HeaderComponent {
+  @Input() place: number;
   @Input() score: UserScore;
 
   constructor(
@@ -46,5 +47,13 @@ export class HeaderComponent {
 
   onMenuClick(): void {
     this.dispatcher.dispatch(new MenuTogglePayload());
+  }
+
+  get klass(): string {
+    let ret = 'score ';
+    this.place === 1 && (ret += 'first');
+    this.place === 2 && (ret += 'second');
+    this.place === 3 && (ret += 'third');
+    return ret;
   }
 }
