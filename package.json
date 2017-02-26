@@ -18,7 +18,7 @@
   "author": "Sam Noedel <sam.noedel@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
-    "oscar-resources": "^1.0.4"
+    "oscar-resources": "^1.0.7"
   },
   "devDependencies": {
     "@angular/common": "2.4.7",
