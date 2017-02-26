@@ -1,0 +1,58 @@
+@import '../styles/colors.scss';
+
+:host {
+  border-image: linear-gradient(to right, color-get-alpha(black, 0), color-get-alpha(gold, 0.8), color-get-alpha(black, 0)) 100% 1;
+  border-style: solid;
+  border-width: 0 0 0.2em 0;
+  box-sizing: border-box;
+  display: flex;
+  height: 2.5em;
+
+  .left-content, .right-content {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    width: 50vw;
+  }
+
+  .right-content {
+    justify-content: flex-end;
+  }
+
+  .score, .title {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0.2em 1em;
+  }
+
+  .open-btn {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    justify-content: space-around;
+    padding: 0 1em;
+
+    & > * {
+      border: solid 1px color-get-alpha(gold, 0.8);
+      background-color: color-get-alpha(gold, 0.6);
+      border-radius: 0.1em;
+      width: 0.3em;
+      height: 0.27em;
+    }
+  }
+
+  .score {
+    background-image: linear-gradient(135deg, color-get-alpha(white, 0.05),
+      color-get-alpha(white, 0.15), color-get-alpha(white, 0.1));
+    border-left: solid 1px color-get-alpha(gold, 0.2);
+    border-right: solid 1px color-get-alpha(gold, 0.2);
+    & > * {
+      line-height: 1em;
+    }
+  }
+
+  .title > * {
+    line-height: 0.9em;
+  }
+}

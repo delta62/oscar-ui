@@ -5,50 +5,58 @@ $bottom-stop: color-get-alpha(white, 0.8);
 $top-stop: color-get-alpha(white, 0.3);
 
 :host {
-  background-image: linear-gradient(to top, $bottom-stop, $top-stop);
-  display: block;
-  height: 10em;
-  position: relative;
-  cursor: pointer;
-
-  &:hover .text-container {
-    background-color: color-get-alpha(black, 0.95);
+  &:not(.correct) .category {
+    filter: grayscale(100%);
   }
 
-  .text-container {
-    background-color: color-get-alpha(black, 0.8);
-    bottom: 0;
-    height: 5em;
-    width: 100%;
-    position: absolute;
-    display: flex;
-    transition: background-color 0.2s;
+  .category {
+    background-image: linear-gradient(to top, $bottom-stop, $top-stop);
+    background-size: cover;
+    cursor: pointer;
+    display: block;
+    height: 10em;
+    position: relative;
+    transition: filter .4s;
 
-    .left-content, .right-content {
+    &:hover .text-container {
+      background-color: color-get-alpha(black, 0.95);
+    }
+
+    .text-container {
+      background-color: color-get-alpha(black, 0.8);
+      bottom: 0;
+      height: 5em;
+      width: 100%;
+      position: absolute;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0.5em;
+      transition: background-color 0.2s;
 
-      & * {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+      .left-content, .right-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.5em;
+
+        & * {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
-    }
 
 
-    .left-content {
-      flex: 1;
-      max-width: calc(100% - 4em);
-    }
+      .left-content {
+        flex: 1;
+        max-width: calc(100% - 4em);
+      }
 
-    .right-content {
-      width: 2.5em;
-    }
+      .right-content {
+        width: 2.5em;
+      }
 
-    h1, h2, h3,h4 {
-      margin: 0;
+      h1, h2, h3,h4 {
+        margin: 0;
+      }
     }
   }
 }

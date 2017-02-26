@@ -9,7 +9,6 @@ import { ScoreboardModule }   from './scoreboard/scoreboard.module';
 
 import { AppComponent }       from './app.component';
 import { NotFoundComponent }  from './not-found.component';
-import { CopyrightComponent } from './copyright.component';
 
 @NgModule({
   imports: [
@@ -22,7 +21,6 @@ import { CopyrightComponent } from './copyright.component';
   ],
   declarations: [
     AppComponent,
-    CopyrightComponent,
     NotFoundComponent
   ],
   bootstrap: [ AppComponent ]

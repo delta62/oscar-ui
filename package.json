@@ -1,6 +1,6 @@
 {
   "name": "oscar-ui",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Frontend application for an Oscars trivia game",
   "scripts": {
     "start": "concurrently \"node-sass app/ -o output\" \"node-sass app/ -o output -wr \" \"tsc -w\" \"lite-server\"",
@@ -35,7 +35,7 @@
     "flux-lite": "^3.0.0",
     "lite-server": "^2.2.2",
     "node-sass": "^4.4.0",
-    "oscar-resources": "^1.0.0",
+    "oscar-resources": "^1.0.3",
     "reflect-metadata": "^0.1.9",
     "rollup": "^0.41.4",
     "rollup-plugin-commonjs": "^7.0.0",
