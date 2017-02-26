@@ -13,7 +13,7 @@ import { User }              from '../shared/model';
     <o-login-banner></o-login-banner>
     <form (ngSubmit)="submit()" #accountForm="ngForm" novalidate>
       <div class="form-item">
-        <o-textinput [label]="'Email'" [required]="true" (keyup)="handleChange($event, 'email')"></o-textinput>
+        <o-textinput type="email" [label]="'Email'" [required]="true" (keyup)="handleChange($event, 'email')"></o-textinput>
       </div>
 
       <div class="form-item">
