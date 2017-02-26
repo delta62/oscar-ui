@@ -1,7 +1,9 @@
 $colors: (
   black: hsl(0,0%,10%),
   white: hsl(0,0%,100%),
-  gold:  hsl(45,37%,55%)
+  gold:  hsl(45,37%,55%),
+  silver: hsl(0, 0%, 74%),
+  bronze: hsl(25, 42%, 72%),
 );
 
 @function color-get($color) {
