@@ -6,6 +6,7 @@ $inner-stop: color-get-alpha(gold, 1);
 
 :host {
   margin-bottom: 2em;
+  display: block;
 
   .images {
     display: flex;

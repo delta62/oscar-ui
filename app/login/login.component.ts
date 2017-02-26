@@ -48,7 +48,8 @@ import { User }                     from '../shared/model';
       <div class="form-item">
         <a routerLink="../create">Create Account</a>
       </div>
-    </form>`
+    </form>
+    <o-copyright></o-copyright>`
 })
 export class LoginComponent {
   email:       string;

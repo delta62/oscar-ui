@@ -23,7 +23,8 @@ import { User }              from '../shared/model';
       <div class="form-item">
         <o-button [disabled]="!accountForm.valid" label="Submit"></o-button>
       </div>
-    </form>`
+    </form>
+    <o-copyright></o-copyright>`
 })
 export class NewAccountComponent {
   model: User;

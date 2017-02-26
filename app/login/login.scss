@@ -5,7 +5,13 @@ $outer-stop: color-get-alpha(black, 0.1);
 $inner-stop: color-get-alpha(gold, 1);
 
 :host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
   form {
+    flex: 1;
+
     a {
       font-family: 'futura-pt', sans-serif;
       color: color-get(white);
@@ -28,5 +34,6 @@ $inner-stop: color-get-alpha(gold, 1);
       text-align: center;
     }
   }
+
 
 }
