@@ -5,11 +5,15 @@ import { CategoryComponent }        from './category.component';
 import { AccountStore, ScoreStore } from '../shared/stores';
 
 @Component({
+  moduleId: module.id,
   selector: 'o-ballot',
+  styleUrls: [ './ballot.css' ],
   template: `
     <o-header [score]="score"></o-header>
-    <router-outlet></router-outlet>
-  `
+    <div class='body'>
+      <router-outlet></router-outlet>
+      <o-copyright></o-copyright>
+    </div>`
 })
 export class BallotComponent implements DoCheck {
   score: UserScore;

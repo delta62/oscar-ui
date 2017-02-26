@@ -2,11 +2,15 @@ import { Component, Input } from '@angular/core';
 import { Location }         from  '@angular/common';
 
 @Component({
+  moduleId: module.id,
+  styleUrls: [ './sub-header.css' ],
   selector: 'o-sub-header',
   template: `
-    <span (click)="back()">Back</span>
-    <h1>{{ title }}</h1>
-  `
+    <div (click)="back()" class='back'>
+      <h5 class='arrow left'></h5>
+      <h5>Back</h5>
+    </div>
+    <h1>{{ title }}</h1>`
 })
 export class SubHeaderComponent {
   @Input() title: string;

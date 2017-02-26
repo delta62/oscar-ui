@@ -4,8 +4,18 @@
   <meta charset="UTF-8">
   <title>Oscars - 2017</title>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
 
+	<script>
+		(function(d) {
+			var config = {
+				kitId: 'pso5egt',
+				scriptTimeout: 3000,
+				async: true
+			},
+			h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+		})(document);
+	</script>
   <script src="node_modules/socket.io-client/dist/socket.io.js"></script>
 	<script src="node_modules/zone.js/dist/zone.js"></script>
 	<script src="node_modules/reflect-metadata/Reflect.js"></script>

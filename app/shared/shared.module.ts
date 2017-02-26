@@ -30,6 +30,7 @@ import { TextInputComponent } from './textinput.component';
 import { ButtonComponent }    from './button.component';
 import { SubHeaderComponent } from './sub-header.component';
 import { MenuComponent }      from './menu.component';
+import { CopyrightComponent } from './copyright.component';
 
 @NgModule({
   imports: [ HttpModule, CommonModule ],
@@ -58,14 +59,16 @@ import { MenuComponent }      from './menu.component';
     TextInputComponent,
     ButtonComponent,
     SubHeaderComponent,
-    MenuComponent
+    MenuComponent,
+    CopyrightComponent
   ],
   exports: [
     HeaderComponent,
     TextInputComponent,
     ButtonComponent,
     SubHeaderComponent,
-    MenuComponent
+    MenuComponent,
+    CopyrightComponent
   ]
 })
 export class SharedModule { }
