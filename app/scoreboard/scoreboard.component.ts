@@ -9,9 +9,11 @@ import { UserScore, User } from '../shared/model';
   selector: 'o-scoreboard',
   template: `
     <o-header [score]="score" [place]="place"></o-header>
-    <div class='body'>
-      <o-sub-header title="Scoreboard"></o-sub-header>
-      <router-outlet></router-outlet>
+    <div class="body">
+      <div class="scores">
+        <o-sub-header title="Scoreboard"></o-sub-header>
+        <router-outlet></router-outlet>
+      </div>
       <o-copyright></o-copyright>
     </div>`
 })

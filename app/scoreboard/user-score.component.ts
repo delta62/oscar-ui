@@ -3,9 +3,11 @@ import { Component, Input } from '@angular/core';
 import { User, UserScoreData, ResponseScore } from '../shared/model';
 
 @Component({
+  moduleId: module.id,
+  styleUrls: [ './user-score.css' ],
   selector: 'o-user-score',
   template: `
-    <h2>{{ user.name }}: {{ userScore.totalScore }}</h2>
+    <h2 class="user-name">{{ user.name }}: {{ userScore.totalScore }}</h2>
     <o-category-score
       *ngFor="let response of responses"
       [score]="response"

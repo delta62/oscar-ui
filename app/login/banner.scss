@@ -1,0 +1,49 @@
+// login/login
+@import 'app/styles/colors.scss';
+
+$outer-stop: color-get-alpha(black, 0.1);
+$inner-stop: color-get-alpha(gold, 1);
+
+:host {
+  margin-bottom: 2em;
+  display: block;
+
+  .images {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+
+    & > img {
+      flex: 3;
+      height: 25vw;
+    }
+  }
+
+  .text {
+    display: flex;
+    width: 100vw;
+    position: absolute;
+    top: 25vw;
+    height: 25vw;
+    background-color: color-get-alpha(black, 0.4);
+
+    .left-content, .right-content {
+      width: 50vw;
+      height: 25vw;
+      display: inline-flex;
+      align-items: center;
+      flex-direction: column;
+
+    }
+
+    .left-content > h6 {
+      line-height: 0em;
+      margin-top: 2em;
+    }
+
+    .right-content > h1 {
+      line-height: 0.8em;
+      margin-top: 0.9em;
+    }
+  }
+}

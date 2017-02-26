@@ -5,18 +5,36 @@ $outer-stop: color-get-alpha(black, 0.1);
 $inner-stop: color-get-alpha(gold, 1);
 
 :host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 
   form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex: 1;
 
-    & > * {
-      margin: 0.5em 0;
+    a {
+      color: color-get-alpha(white, 0.9);
+      font-family: 'futura-pt', sans-serif;
+      text-transform: uppercase;
+      font-size: 0.8em;
+    }
+
+    .form-item {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin: 0.2em 0;
+
+      & > * {
+        margin: 0.5em 0;
+      }
+    }
+
+    .text {
+      font-size: 0.8em;
+      text-align: center;
     }
   }
 
 
-  border-top: solid 0.1em;
-  border-image: linear-gradient(90deg, $outer-stop, $inner-stop, $outer-stop);
 }

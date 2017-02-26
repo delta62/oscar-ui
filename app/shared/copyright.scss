@@ -2,11 +2,12 @@
 
 :host {
   align-items: center;
-  box-sizing: border-box;
   border-image: linear-gradient(to right, color-get-alpha(black, 0), color-get-alpha(gold, 0.8), color-get-alpha(black, 0)) 100% 1;
   border-style: solid;
-  border-width: 0.2em 0 0 0;
+  border-width: 0.2rem 0 0 0;
   display: flex;
+  font-size: 0.8em;
+  font-weight: 300;
   height: 2.5em;
   padding: 0 1em;
 }

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   styleUrls: [ './copyright.css' ],
   selector: 'o-copyright',
   template: `
-    &copy; Sam Noedel, 2017
+    &copy; Sam & Codi Noedel, 2017
   `
 })
 export class CopyrightComponent {  }
