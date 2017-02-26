@@ -11,7 +11,7 @@ export interface SocketEmitter {
 export class SocketService {
 
   connect(): SocketEmitter {
-    return io('http://localhost:3001');
+    return io(`${AppSettings.baseUrl}`);
   }
 
   disconnect(socket: SocketEmitter): void {
