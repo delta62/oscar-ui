@@ -41,8 +41,8 @@ import { User }                     from '../shared/model';
         </o-button>
       </div>
 
-      <span [hidden]="!invalidAuth">
-        Hmm... I don't recognize that email or your PIN was incorrect.
+      <span [hidden]="!invalidAuth" class="text">
+        I don't recognize that email or your PIN was incorrect.
       </span>
 
       <div class="form-item">

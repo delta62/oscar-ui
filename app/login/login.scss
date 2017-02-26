@@ -13,17 +13,17 @@ $inner-stop: color-get-alpha(gold, 1);
     flex: 1;
 
     a {
+      color: color-get-alpha(white, 0.9);
       font-family: 'futura-pt', sans-serif;
-      color: color-get(white);
       text-transform: uppercase;
       font-size: 0.8em;
     }
 
     .form-item {
-      margin: 0.5em 0;
+      align-items: center;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      margin: 0.2em 0;
 
       & > * {
         margin: 0.5em 0;
@@ -31,6 +31,7 @@ $inner-stop: color-get-alpha(gold, 1);
     }
 
     .text {
+      font-size: 0.8em;
       text-align: center;
     }
   }
