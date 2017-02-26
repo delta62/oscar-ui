@@ -11,7 +11,8 @@ export class UserService {
     let body = { email, name };
     return this.http.post(this.buildAccountUrl(), body)
       .toPromise()
-      .then(_ => null);
+      .then(_ => null)
+      .catch(_ => null);
   }
 
   getUsers(authToken: AuthToken): Promise<Array<User>> {
