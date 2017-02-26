@@ -1,6 +1,7 @@
 @import '../styles/colors.scss';
 
 :host {
+  background-color: color-get(black);
   border-image: linear-gradient(to right, color-get-alpha(black, 0), color-get-alpha(gold, 0.8), color-get-alpha(black, 0)) 100% 1;
   border-style: solid;
   border-width: 0 0 0.2em 0;

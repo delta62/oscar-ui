@@ -2,10 +2,13 @@
   display: block;
   height: 100vh;
 
+  .header {
+    position: fixed;
+    top: 0;
+  }
+
   .body {
+    margin-top: 2.5em;
     display: block;
-    height: calc(100vh - 2.5em);
-    overflow-y: auto;
-    overflow-x: hidden;
   }
 }
