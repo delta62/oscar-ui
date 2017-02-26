@@ -17,6 +17,9 @@
   "repository": "git@github.com:delta62/oscar-ui.git",
   "author": "Sam Noedel <sam.noedel@gmail.com>",
   "license": "GPL-3.0",
+  "dependencies": {
+    "oscar-resources": "^1.0.3"
+  },
   "devDependencies": {
     "@angular/common": "2.4.7",
     "@angular/compiler": "2.4.7",
@@ -35,7 +38,6 @@
     "flux-lite": "^3.0.0",
     "lite-server": "^2.2.2",
     "node-sass": "^4.4.0",
-    "oscar-resources": "^1.0.3",
     "reflect-metadata": "^0.1.9",
     "rollup": "^0.41.4",
     "rollup-plugin-commonjs": "^7.0.0",
