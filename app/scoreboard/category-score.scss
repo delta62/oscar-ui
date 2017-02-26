@@ -1,0 +1,23 @@
+:host {
+  display: block;
+
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+
+  .breakdown {
+    display: flex;
+    font-size: 0.8em;
+    margin-left: 1em;
+
+    & > * {
+      &:not(:last-child) {
+        margin-right: 0.5em;
+      }
+
+      :first-child {
+        font-weight: 600;
+      }
+    }
+  }
+}

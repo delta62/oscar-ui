@@ -3,12 +3,25 @@ import { Component, Input } from '@angular/core';
 import { ResponseScore } from '../shared/model';
 
 @Component({
+  moduleId: module.id,
+  styleUrls: [ './category-score.css' ],
   selector: 'o-category-score',
   template: `
     <h3>{{ categoryName }}: {{ score.score }}</h3>
-    <h4 *ngIf="isCorrect">Correct Answer: {{ score.correct }}</h4>
-    <h4 *ngIf="!isCorrect">Incorrect Answer: {{ score.incorrect }}</h4>
-    <h4 *ngIf="isFirstCorrect">First Correct Answer: {{ score.first }}</h4>`
+    <div class="breakdown">
+      <div *ngIf="isCorrect">
+        <span>{{ score.correct }}</span>
+        <span>(Correct)</span>
+      </div>
+      <div *ngIf="!isCorrect">
+        <span>0</span>
+        <span>(Incorrect)</span>
+      </div>
+      <div *ngIf="isFirstCorrect">
+        <span>+ {{ score.first }}</span>
+        <span>(First Correct)</span>
+      </div>
+    </div>`
 })
 export class CategoryScoreComponent {
   @Input() categoryName: string;
