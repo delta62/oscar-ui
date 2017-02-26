@@ -5,13 +5,18 @@ $bottom-stop: color-get-alpha(white, 0.8);
 $top-stop: color-get-alpha(white, 0.3);
 
 :host {
+  &:not(.correct) .category {
+    filter: grayscale(100%);
+  }
+
   .category {
     background-image: linear-gradient(to top, $bottom-stop, $top-stop);
     background-size: cover;
+    cursor: pointer;
     display: block;
     height: 10em;
     position: relative;
-    cursor: pointer;
+    transition: filter .4s;
 
     &:hover .text-container {
       background-color: color-get-alpha(black, 0.95);

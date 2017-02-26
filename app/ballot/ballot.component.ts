@@ -9,7 +9,7 @@ import { AccountStore, ScoreStore } from '../shared/stores';
   selector: 'o-ballot',
   styleUrls: [ './ballot.css' ],
   template: `
-    <o-header [score]="score"></o-header>
+    <o-header [score]="score" [place]="place"></o-header>
     <div class='body'>
       <router-outlet></router-outlet>
       <o-copyright></o-copyright>
@@ -17,6 +17,7 @@ import { AccountStore, ScoreStore } from '../shared/stores';
 })
 export class BallotComponent implements DoCheck {
   score: UserScore;
+  place: number;
 
   constructor(
     private scoreStore: ScoreStore,
@@ -25,5 +26,6 @@ export class BallotComponent implements DoCheck {
   ngDoCheck(): void {
     let user = this.accountStore.state;
     this.score = this.scoreStore.getUserScore(user._id) || UserScore.makeDefault();
+    this.place = this.scoreStore.getUserPlacement(user._id);
   }
 }

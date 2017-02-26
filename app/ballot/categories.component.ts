@@ -17,6 +17,7 @@ import {
       *ngFor="let category of categories"
       [category]="category"
       [response]="getResponseByCategory(category)"
+      [ngClass]="{ correct: isCorrect(category) }"
       (click)="navigateToCategory(category)"></o-category-preview>`
 })
 export class CategoriesComponent implements DoCheck {
@@ -40,5 +41,10 @@ export class CategoriesComponent implements DoCheck {
 
   getResponseByCategory(category: Category): Response {
     return this.responses.find((r) => r.category == category._id);
+  }
+
+  isCorrect(category: Category): boolean {
+    let response = this.getResponseByCategory(category);
+    return category.answer && response && category.answer === response.value;
   }
 };
