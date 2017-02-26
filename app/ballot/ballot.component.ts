@@ -9,11 +9,11 @@ import { AccountStore, ScoreStore } from '../shared/stores';
   selector: 'o-ballot',
   styleUrls: [ './ballot.css' ],
   template: `
-    <o-header [score]="score" [place]="place"></o-header>
     <div class='body'>
       <router-outlet></router-outlet>
       <o-copyright></o-copyright>
-    </div>`
+    </div>
+    <o-header [score]="score" [place]="place" class="header"></o-header>`
 })
 export class BallotComponent implements DoCheck {
   score: UserScore;
