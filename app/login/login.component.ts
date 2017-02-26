@@ -10,8 +10,9 @@ import { User }                     from '../shared/model';
   selector: 'o-login',
   styleUrls: [ './login.css' ],
   template: `
+    <o-login-banner></o-login-banner>
     <form (ngSubmit)="onSubmit()" novalidate>
-      <div>
+      <div class="form-item">
         <o-textinput type="email" name="email" label="Email"
           #emailControl="ngModel"
           pattern=".+@.+\\..+"
@@ -25,11 +26,11 @@ import { User }                     from '../shared/model';
         </o-button>
       </div>
 
-      <div [hidden]="!isPinStep">
+      <div [hidden]="!isPinStep" class="text">
         Check your email for a one-time PIN to log in with.
       </div>
 
-      <div *ngIf="isPinStep">
+      <div *ngIf="isPinStep" class="form-item">
         <o-textinput label="PIN" name="pin"
           #pinControl="ngModel"
           [required]="true"
@@ -44,7 +45,9 @@ import { User }                     from '../shared/model';
         Hmm... I don't recognize that email or your PIN was incorrect.
       </span>
 
-      <a routerLink="../create">Create Account</a>
+      <div class="form-item">
+        <a routerLink="../create">Create Account</a>
+      </div>
     </form>`
 })
 export class LoginComponent {
