@@ -34,6 +34,7 @@ export class MenuComponent implements OnInit {
   onLogoutClick(): void {
     this.dispatcher.dispatch(new LogoutPayload());
     this.router.navigateByUrl('/account/login');
+    this.dispatcher.dispatch(new MenuTogglePayload());
   }
 
   onBackdropClick(): void {
