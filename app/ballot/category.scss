@@ -6,7 +6,6 @@ $bottom-stop: color-get-alpha(white, 0.8);
 $top-stop: color-get-alpha(white, 0.3);
 
 :host {
-
   .category-option {
     background-image: linear-gradient(to top, $bottom-stop, $top-stop);
     background-repeat: no-repeat;
@@ -17,7 +16,7 @@ $top-stop: color-get-alpha(white, 0.3);
 
     .text-container {
       align-items: center;
-      background-color: color-get-alpha(black, 0.8);
+      background-color: color-get-alpha(black, 0.6);
       bottom: 0;
       display: flex;
       height: 5em;
@@ -34,7 +33,7 @@ $top-stop: color-get-alpha(white, 0.3);
         @include big-radio;
 
         + label {
-          max-width: 96vw;
+          max-width: 90vw;
         }
       }
 

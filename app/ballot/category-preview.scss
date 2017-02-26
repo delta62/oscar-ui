@@ -23,7 +23,7 @@ $top-stop: color-get-alpha(white, 0.3);
     }
 
     .text-container {
-      background-color: color-get-alpha(black, 0.8);
+      background-color: color-get-alpha(black, 0.6);
       bottom: 0;
       height: 5em;
       width: 100%;
@@ -56,6 +56,12 @@ $top-stop: color-get-alpha(white, 0.3);
 
       h1, h2, h3,h4 {
         margin: 0;
+      }
+
+      .choice {
+        height: 1.2em;
+        font-size: 0.7em;
+        margin-left: 1em;
       }
     }
   }
