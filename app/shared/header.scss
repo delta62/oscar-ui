@@ -47,8 +47,31 @@
       color-get-alpha(white, 0.15), color-get-alpha(white, 0.1));
     border-left: solid 1px color-get-alpha(gold, 0.2);
     border-right: solid 1px color-get-alpha(gold, 0.2);
+    position: relative;
+
     & > * {
       line-height: 1em;
+    }
+
+    &.first img,
+    &.second img,
+    &.third img {
+      height: 90%;
+      left: -.5em;
+      position: absolute;
+      top: 5%;
+    }
+
+    &.first img {
+      color: color-get(gold);
+    }
+
+    &.second img {
+      color: color-get(silver);
+    }
+
+    &.third img {
+      color: color-get(bronze);
     }
   }
 

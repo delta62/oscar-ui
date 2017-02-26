@@ -1615,9 +1615,9 @@ os-tmpdir@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
 
-oscar-resources@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/oscar-resources/-/oscar-resources-1.0.4.tgz#f20b742d43f827f415bb28a05a76d3871a02abea"
+oscar-resources@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/oscar-resources/-/oscar-resources-1.0.7.tgz#49ae85ab5d18bae08238038b8a0a0b885e4381c9"
 
 osenv@0:
   version "0.1.4"

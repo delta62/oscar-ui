@@ -33,7 +33,7 @@ export class ScoreStore extends FluxStore<Array<UserScore>, IPayload> {
     if (!userScore) return null;
 
     let biggestObservedScore = 0, placement = 1;
-    let sortedScores = this.state.slice().sort((a, b) => a.score.totalScore - b.score.totalScore);
+    let sortedScores = this.state.slice().sort((a, b) => b.score.totalScore - a.score.totalScore);
     for (let i = 0; i < sortedScores.length; i += 1) {
       if (sortedScores[i] === userScore) return placement;
       if (sortedScores[i].score.totalScore > biggestObservedScore) {

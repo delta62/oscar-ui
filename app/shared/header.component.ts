@@ -19,6 +19,9 @@ import { LogoutPayload, MenuTogglePayload } from './payload';
     </div>
     <div class="right-content">
       <div [ngClass]="klass" (click)="onScoreClick()">
+        <img *ngIf="place === 1" src="images/oscar-gold.svg" alt="Gold Oscar meeple"/>
+        <img *ngIf="place === 2" src="images/oscar-silver.svg" alt="Silver Oscar meeple"/>
+        <img *ngIf="place === 3" src="images/oscar-bronze.svg" alt="Bronze Oscar meeple"/>
         <h3>{{ score.score.totalScore }}</h3>
         <h6>Score</h6>
       </div>
@@ -47,6 +50,10 @@ export class HeaderComponent {
 
   onMenuClick(): void {
     this.dispatcher.dispatch(new MenuTogglePayload());
+  }
+
+  get isPlaced(): boolean {
+    return this.place > 0 && this.place < 4;
   }
 
   get klass(): string {
