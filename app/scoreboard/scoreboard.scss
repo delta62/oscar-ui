@@ -6,5 +6,10 @@
     display: block;
     height: calc(100vh - 2.5em);
     overflow-y: auto;
+
+    .scores {
+      display: block;
+      min-height: calc(100vh - 5em);
+    }
   }
 }
