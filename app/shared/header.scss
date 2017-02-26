@@ -29,16 +29,16 @@
   .open-btn {
     display: flex;
     flex-direction: column;
-    height: 80%;
+    height: 70%;
     justify-content: space-around;
     padding: 0 1em;
 
     & > * {
       border: solid 1px color-get-alpha(gold, 0.8);
       background-color: color-get-alpha(gold, 0.6);
-      border-radius: 0.1em;
-      width: 0.3em;
-      height: 0.27em;
+      border-radius: 1px;
+      width: 0.2em;
+      height: 0.2em;
     }
   }
 

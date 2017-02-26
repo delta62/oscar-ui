@@ -7,7 +7,7 @@ import { Location }         from  '@angular/common';
   selector: 'o-sub-header',
   template: `
     <div (click)="back()" class='back'>
-      <h5 class='arrow left'></h5>
+      <h6 class='arrow left'></h6>
       <h5>Back</h5>
     </div>
     <h1>{{ title }}</h1>`

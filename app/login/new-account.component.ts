@@ -10,6 +10,7 @@ import { User }              from '../shared/model';
   selector: 'o-newaccount',
   styleUrls: [ './new-account.css' ],
   template: `
+    <o-login-banner></o-login-banner>
     <form (ngSubmit)="submit()" #accountForm="ngForm" novalidate>
       <div class="form-item">
         <o-textinput [label]="'Email'" [required]="true" (keyup)="handleChange($event, 'email')"></o-textinput>
@@ -19,8 +20,11 @@ import { User }              from '../shared/model';
         <o-textinput [label]="'Name'" [required]="true" (keyup)="handleChange($event, 'name')"></o-textinput>
       </div>
 
-      <button [disabled]="!accountForm.valid">Submit</button>
-    </form>`
+      <div class="form-item">
+        <o-button [disabled]="!accountForm.valid" label="Submit"></o-button>
+      </div>
+    </form>
+    <o-copyright></o-copyright>`
 })
 export class NewAccountComponent {
   model: User;
