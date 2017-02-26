@@ -9,13 +9,14 @@ $inner-stop: color-get-alpha(gold, 1);
   display: block;
 
   .images {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100vw;
+    .row {
+      display: flex;
+      width: 100vw;
 
-    & > img {
-      flex: 3;
-      height: 25vw;
+      & > img {
+        flex: 3;
+        height: 25vw;
+      }
     }
   }
 
