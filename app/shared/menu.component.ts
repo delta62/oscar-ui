@@ -11,9 +11,14 @@ import { LogoutPayload, MenuTogglePayload } from './payload';
   styleUrls: [ './menu.css' ],
   template: `
     <div class="backdrop" (click)="onBackdropClick()"></div>
-    <ol class="menu">
-      <span>{{ user.name }}</span>
-      <a (click)="onLogoutClick()">Log Out</a>
+    <ol class="menu" >
+      <div class="user">
+        <span class="person">
+          <span></span><span></span>
+        </span>
+        <span class="name">{{ user.name }}</span>
+      </div>
+      <a class="item" (click)="onLogoutClick()">Log Out</a>
     </ol>
   `
 })

@@ -32,6 +32,10 @@ $top-stop: color-get-alpha(white, 0.3);
 
       input[type="radio"] {
         @include big-radio;
+
+        + label {
+          max-width: 96vw;
+        }
       }
 
       h1, h2, h3,h4 {
