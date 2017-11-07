@@ -1,0 +1,13 @@
+:root {
+  --color-primary: hsl(45, 37%, 55%);
+  --color-primary-faded: hsla(45, 37%, 55%, 0.2);
+  --color-highlight: hsla(0, 0%, 100%, 0.8);
+}
+
+body {
+  background: black;
+  color: white;
+  height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
