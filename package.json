@@ -17,6 +17,7 @@
     "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
-    "immutable": "^3.8.2"
+    "immutable": "^3.8.2",
+    "lit-html": "^0.7.1"
   }
 }

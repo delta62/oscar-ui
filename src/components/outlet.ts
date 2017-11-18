@@ -1,19 +1,20 @@
-import { Binding, Component } from '../decorators'
+import { html } from 'lit-html'
+import { Binding, Component, Renderable } from '../decorators'
 import { registerOutlet } from '../router'
 
-@Component({
-  tag: 'o-outlet',
-  template: ''
-})
+@Component()
 export default class RouterOutletComponent extends HTMLElement {
+  static tagName = 'o-outlet'
+
+  @Binding() component: Renderable
+
   connectedCallback() {
     registerOutlet(this)
   }
 
-  @Binding() set component(val: HTMLElement) {
-    while (this.shadowRoot.firstChild) {
-      this.shadowRoot.removeChild(this.shadowRoot.firstChild)
-    }
-    this.shadowRoot.appendChild(val)
+  render(state: this) {
+    return this.component
+      ? this.component.render(this.component)
+      : html``
   }
 }

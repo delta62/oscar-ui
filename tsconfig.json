@@ -3,6 +3,7 @@
     "target": "es6",
     "module": "es2015",
     "outDir": "dist",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "moduleResolution": "node"
   }
 }

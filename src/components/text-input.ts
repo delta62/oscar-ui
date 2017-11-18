@@ -1,88 +1,92 @@
+import { html } from 'lit-html/lib/lit-extended'
+import { spacify } from '../collections'
 import { Binding, Component } from '../decorators'
 
-@Component({
-  tag: 'o-text-input',
-  styles: `
-    :host {
-      display: inline-block;
-    }
+@Component()
+export default class TextInputComponent extends HTMLElement {
+  static tagName = 'o-text-input'
 
-    div {
-      border-bottom: solid 0.2em var(--color-primary);
-      position: relative;
-    }
+  @Binding() label: string = ''
+  @Binding() value: string = ''
 
-    div::after {
-      background-color: var(--color-highlight);
-      bottom: -.2em;
-      content: '';
-      height: .2em;
-      left: 0;
-      position: absolute;
-      transition: .2s;
-      width: 0;
-    }
+  private classes: Set<string> = new Set()
 
-    label {
-      display: block;
-      font-size: .75em;
-      color: var(--color-primary);
-      text-transform: uppercase;
-      transition: .2s color;
-    }
+  render({ onBlur, onFocus, label, value, classes, onInput }: this) {
+    return html`
+    <style>
+      :host {
+        display: inline-block;
+      }
 
-    input {
-      background-color: transparent;
-      border: none;
-      color: var(--color-primary);
-      margin: 0;
-      font-size: 1.21em;
-      padding: .5em 0;
-      width: 16em;
-    }
+      div {
+        border-bottom: solid 0.2em var(--color-primary);
+        position: relative;
+      }
 
-    input:focus {
-      color: var(--color-highlight);
-      outline: none;
-    }
+      div::after {
+        background-color: var(--color-highlight);
+        bottom: -.2em;
+        content: '';
+        height: .2em;
+        left: 0;
+        position: absolute;
+        transition: .2s;
+        width: 0;
+      }
 
-    .active label {
-      color: var(--color-highlight);
-    }
+      label {
+        display: block;
+        font-size: .75em;
+        color: var(--color-primary);
+        text-transform: uppercase;
+        transition: .2s color;
+      }
 
-    .active::after {
-      width: 100%;
-    }
-  `,
-  template: `
-    <div>
-      <label for="input"></label>
-      <input id="input" type="text">
+      input {
+        background-color: transparent;
+        border: none;
+        color: var(--color-primary);
+        margin: 0;
+        font-size: 1.21em;
+        padding: .5em 0;
+        width: 16em;
+      }
+
+      input:focus {
+        color: var(--color-highlight);
+        outline: none;
+      }
+
+      .active label {
+        color: var(--color-highlight);
+      }
+
+      .active::after {
+        width: 100%;
+      }
+    </style>
+    <div class$="${spacify(classes)}">
+      <label for="input">${label}</label>
+      <input
+        on-input="${onInput.bind(this)}"
+        on-blur="${onBlur.bind(this)}"
+        on-focus="${onFocus.bind(this)}"
+        value="${value}"
+        id="input">
     </div>`
-})
-export default class extends HTMLElement {
-  connectedCallback() {
-    this.$('input').addEventListener('focus', this.onFocus.bind(this))
-    this.$('input').addEventListener('blur', this.onBlur.bind(this))
-  }
-
-  @Binding() set label(val: string) {
-    this.$('label').innerText = val
-  }
-
-  @Binding() set pattern(val: string) {
-    this.$<HTMLInputElement>('input').pattern = val
-  }
-
-  get value() {
-    return this.$<HTMLInputElement>('input').value
-  }
-
-  private onFocus() {
-    this.$('div').classList.add('active')
   }
 
   private onBlur() {
-    this.$('div').classList.remove('active')
+    this.classes.delete('active');
+    (this as any).scheduleRender()
+  }
+
+  private onFocus() {
+    this.classes.add('active');
+    (this as any).scheduleRender()
+  }
+
+  private onInput(e: any) {
+    this.value = e.currentTarget.value
   }
 }

@@ -1,18 +1,17 @@
+import { html } from 'lit-html'
 import { Binding, Component } from '../decorators'
 import { navigate } from '../router'
 
-@Component({
-  tag: 'o-link',
-  template: `
-    <a></a>
-  `
-})
+@Component()
 export default class LinkElement extends HTMLElement {
-  connectedCallback() {
-    this.$('a').innerHTML = this.innerHTML
-  }
+  static tagName = 'o-link'
 
-  @Binding() set href(value: string) {
-    this.$('a').setAttribute('href', value)
+  @Binding() href: string = ''
+
+  render({ href }: this) {
+    // Don't put href attributes on links if there is none
+    return href
+      ?  html`<a href$="${href}"><slot></slot></a>`
+      : html`<a><slot></slot></a>`
   }
 }

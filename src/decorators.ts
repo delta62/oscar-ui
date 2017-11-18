@@ -1,54 +1,69 @@
-interface ComponentOptions {
-  tag: string
-  template: string
-  styles?: string
+import { TemplateResult } from 'lit-html'
+import { render } from 'lit-html/lib/lit-extended'
+
+export interface Renderable {
+  connectedCallback?(): void
+  attributeChangedCallback?(name: string, oldVal: string, newVal: string): void
+  render(state: this): TemplateResult
 }
 
-export function Component(opts: ComponentOptions) {
-  return (target: typeof HTMLElement): any => {
+interface Newable {
+  new(...args: Array<any>): HTMLElement & Renderable
+}
+
+export function Component() {
+  return (target: Newable): any => {
     return class extends target {
-      static tag = opts.tag
+      private renderPromise: Promise<void> | null = null
 
       static get observedAttributes() {
-        return (this.prototype as any)._attributes
+        return (this.prototype as any).__observedAttributes
       }
 
       constructor() {
         super()
-        const shadowRoot = this.attachShadow({ mode: 'open' })
-        const doc = this.ownerDocument
-        const tpl = doc.createElement('template')
-        tpl.innerHTML = opts.styles
-          ? `<style>${opts.styles}</style>${opts.template}`
-          : opts.template
-
-        const clone = tpl.content.cloneNode(true)
-        shadowRoot.appendChild(clone)
+        this.attachShadow({ mode: 'open' })
       }
 
-      attributeChangedCallback(name, oldVal, newVal) {
+      connectedCallback() {
+        if (super.connectedCallback) super.connectedCallback()
+        render(this.render(this), this.shadowRoot)
+      }
+
+      attributeChangedCallback(name: string, oldVal: string, newVal: string) {
         if (oldVal === newVal) return
+        if (super.attributeChangedCallback) super.attributeChangedCallback(name, oldVal, newVal)
         this[name] = newVal
+        this.scheduleRender()
       }
 
-      $<T extends HTMLElement = HTMLElement>(selector: string) {
-        return this.shadowRoot.querySelector(selector) as T | null
+      scheduleRender() {
+        if (this.renderPromise !== null) return
+        this.renderPromise = Promise.resolve()
+          .then(() => {
+            render(this.render(this), this.shadowRoot)
+            this.renderPromise = null
+          })
       }
     }
   }
 }
 
 export function Binding() {
-  return (target: any, name: string, descriptor: PropertyDescriptor) => {
-    if (!target._attributes) {
-      target._attributes = [ ]
-    }
-    target._attributes.push(name)
+  return (target: any, name: string) => {
+    if (!target.__observedAttributes) target.__observedAttributes = [ ]
 
-    if (descriptor.set) {
-      const originalSet = descriptor.set
-      descriptor.set = function(val) {
-        originalSet.call(this, val)
+    target.__observedAttributes.push(name)
+
+    Object.defineProperty(target, name, {
+      set: function(val: any) {
+        if (!this.__bindings) this.__bindings = { }
+        if (this[name] === val) return
+
+        // Update component state
+        this.__bindings[name] = val
+
+        // Update DOM
         switch (typeof val) {
           case 'string':
           case 'number':
@@ -58,7 +73,12 @@ export function Binding() {
             val ? this.setAttribute(name, '') : this.removeAttribute(name)
             break
         }
+
+        this.scheduleRender()
+      },
+      get: function() {
+        return this.__bindings[name]
       }
-    }
+    })
   }
 }
