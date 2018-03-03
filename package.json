@@ -4,7 +4,7 @@
   "description": "Frontend application for an Oscars trivia game",
   "scripts": {
     "start": "concurrently \"node-sass app/ -o output\" \"node-sass app/ -o output -wr \" \"tsc -w\" \"lite-server\"",
-    "prepublish": "npm run sass:prod && npm run ngc && npm run rollup && npm run copysass && npm run copyhtml",
+    "prepublishOnly": "npm run sass:prod && npm run ngc && npm run rollup && npm run copysass && npm run copyhtml",
     "sass:prod": "node-sass app/ -o app --output-style compressed",
     "copysass": "cp app/styles/app.css dist/",
     "copyhtml": "cp index-aot.html dist/index.html",
@@ -18,7 +18,7 @@
   "author": "Sam Noedel <sam.noedel@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
-    "oscar-resources": "^1.0.7"
+    "oscar-resources": "git://github.com/codifiman/oscar-resources"
   },
   "devDependencies": {
     "@angular/common": "2.4.7",
@@ -46,7 +46,7 @@
     "rxjs": "^5.0.1",
     "socket.io-client": "^1.7.2",
     "systemjs": "0.20.7",
-    "typescript": "^2.1.4",
+    "typescript": "~2.1.4",
     "zone.js": "^0.7.6"
   }
 }
