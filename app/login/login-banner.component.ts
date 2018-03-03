@@ -30,7 +30,7 @@ import { Component, Renderer, ElementRef, ViewChild } from '@angular/core';
         <h6>The</h6><h1>Oscars</h1>
       </div>
       <div class='right-content'>
-        <h1>Ballot</h1><h6>2017</h6>
+        <h1>Ballot</h1><h6>2018</h6>
       </div>
     </div>`
 })
