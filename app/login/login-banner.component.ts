@@ -7,22 +7,22 @@ import { Component, Renderer, ElementRef, ViewChild } from '@angular/core';
   template: `
     <div class='images'>
       <div class="row">
-        <img src='images/arrival-square.jpg'/>
-        <img src='images/fences-square.jpg'/>
-        <img src='images/hacksaw-ridge-square.jpg'/>
-        <img src='images/hell-or-high-water-square.jpg'/>
+        <img src='images/a-fantastic-woman-square.jpg'/>
+        <img src='images/the-insult-square.jpg'/>
+        <img src='images/get-out-square.jpg'/>
+        <img src='images/lady-bird-square.jpg'/>
       </div>
       <div class="row">
-        <img src='images/hidden-figures-square.jpg'/>
-        <img src='images/la-la-land-square.jpg'/>
-        <img src='images/lion-square.jpg'/>
-        <img src='images/manchester-by-the-sea-square.jpg'/>
+        <img src='images/darkest-hour-square.jpg'/>
+        <img src='images/dunkirk-square.jpg'/>
+        <img src='images/the-shape-of-water-square.jpg'/>
+        <img src='images/call-me-by-your-name-square.jpg'/>
       </div>
       <div class="row">
-        <img src='images/moonlight-square.jpg'/>
-        <img src='images/watani-my-homeland-square.jpg'/>
-        <img src='images/a-man-called-ove-square.jpg'/>
-        <img src='images/tanna-square.jpg'/>
+        <img src='images/phantom-thread-square.jpg'/>
+        <img src='images/the-post-square.jpg'/>
+        <img src='images/on-body-and-soul-square.jpg'/>
+        <img src='images/three-billboards-outside-ebbing-missouri-square.jpg'/>
       </div>
     </div>
     <div class='text'>
