@@ -1,6 +1,6 @@
 {
   "name": "oscar-ui",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Frontend application for an Oscars trivia game",
   "scripts": {
     "start": "concurrently \"node-sass app/ -o output\" \"node-sass app/ -o output -wr \" \"tsc -w\" \"lite-server\"",
