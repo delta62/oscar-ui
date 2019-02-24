@@ -7,22 +7,22 @@ import { Component, Renderer, ElementRef, ViewChild } from '@angular/core';
   template: `
     <div class='images'>
       <div class="row">
-        <img src='images/a-fantastic-woman-square.jpg'/>
-        <img src='images/the-insult-square.jpg'/>
-        <img src='images/get-out-square.jpg'/>
-        <img src='images/lady-bird-square.jpg'/>
+        <img src='images/a-star-is-born-square.jpg'/>
+        <img src='images/roma-square.jpg'/>
+        <img src='images/green-book-square.jpg'/>
+        <img src='images/black-panther-square.jpg'/>
       </div>
       <div class="row">
-        <img src='images/darkest-hour-square.jpg'/>
-        <img src='images/dunkirk-square.jpg'/>
-        <img src='images/the-shape-of-water-square.jpg'/>
-        <img src='images/call-me-by-your-name-square.jpg'/>
+        <img src='images/minding-the-gap-square.jpg'/>
+        <img src='images/bao-square.jpg'/>
+        <img src='images/the-favourite-square.jpg'/>
+        <img src='images/bohemian-rhapsody-square.jpg'/>
       </div>
       <div class="row">
-        <img src='images/phantom-thread-square.jpg'/>
-        <img src='images/the-post-square.jpg'/>
-        <img src='images/on-body-and-soul-square.jpg'/>
-        <img src='images/three-billboards-outside-ebbing-missouri-square.jpg'/>
+        <img src='images/spider-man-into-the-spider-verse-square.jpg'/>
+        <img src='images/the-ballad-of-buster-scruggs-square.jpg'/>
+        <img src='images/vice-square.jpg'/>
+        <img src='images/blackkklansman-square.jpg'/>
       </div>
     </div>
     <div class='text'>
